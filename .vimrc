@@ -39,7 +39,6 @@ set nrformats=
 
 
 " DISPLAY
-colorscheme badwolf
 set number
 set ruler
 set list
@@ -54,6 +53,10 @@ set cursorcolumn
 set virtualedit=onemore
 set visualbell
 let g:indent_guides_enable_on_vim_startup = 1
+
+
+" COLOR
+colorscheme badwolf
 
 
 " Tab
