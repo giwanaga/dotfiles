@@ -181,7 +181,7 @@ vnoremap ( "zdi^V(<C-R>z)<ESC>
 " ZENKAKU SPACE
 """"""""""""""""""""
 function! ZenkakuSpace()
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+  highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 endfunction
 
 if has('syntax')
@@ -194,35 +194,71 @@ call ZenkakuSpace()
 endif
 
 
-""""""""""""""""""""
-" INSERT MODE
-""""""""""""""""""""
-"let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
-"
-"if has('syntax')
-"  augroup InsertHook
-"    autocmd!
-"    autocmd InsertEnter * call s:StatusLine('Enter')
-"    autocmd InsertLeave * call s:StatusLine('Leave')
-"  augroup END
-"endif
-"
-"let s:slhlcmd = ''
-"function! s:StatusLine(mode)
-"  if a:mode == 'Enter'
-"    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
-"    silent exec g:hi_insert
-"  else
-"    highlight clear StatusLine
-"    silent exec s:slhlcmd
-"  endif
-"endfunction
-"
-"function! s:GetHighlight(hi)
-"  redir => hl
-"  exec 'highlight '.a:hi
-"  redir END
-"  let hl = substitute(hl, '[\r\n]', '', 'g')
-"  let hl = substitute(hl, 'xxx', '', '')
-"  return hl
-"endfunction
+function! ShowToge()
+  highlight ShowToge ctermfg=magenta guifg=magenta
+endfunction
+if has('syntax')
+  augroup ShowToge
+    autocmd!
+    autocmd ColorScheme * call ShowToge()
+    autocmd VimEnter,WinEnter,BufRead * match ShowToge /[,;=]/
+  augroup END
+  call ShowToge()
+endif
+
+
+" neosnippet
+" neosnippet key-mappings
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+" SuperTab like snippets behavior
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "<Plug>(neosnippet_expand_or_jump)"
+      \ : pumvisible() ? "<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "<Plug>(neosnippet_expand_or_jump)"
+      \ : "\<TAB>"
+" neosnippet For snippet_complete marker
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+
+" neocomplete
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#dictionary#dictionaries = {
+  \ 'default'  : '',
+  \ 'vimshell' : $HOME.'/.vimshell_hist',
+  \ 'scheme'   : $HOME.'/.gosh_completions'
+  \ }
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" neocomplete # keymappings
+inoremap <expr><C-g>  neocomplete#undo_completion()
+inoremap <expr><C-l>  neocomplete#complete_common_string()
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "") . "\<CR>"
+endfunction
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>   neocomplete#smart_close_popup()."\<C-h>"
+
+
+" neocomplete # enable omni completion
+autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
+
+
+
+
