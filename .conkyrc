@@ -67,5 +67,5 @@ $hr
 $hr
 ${font DejaVu Sans Mono:size=10:bold}${color daa520}Date & Time ${color}
 ${font DejaVu Sans Mono:size=10:bold}${color white}${time %e %B %Y   %A    %I:%M %p}
-$hr
+${color}$hr
 ]]
