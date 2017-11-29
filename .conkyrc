@@ -1,0 +1,71 @@
+conky.config = {
+  alignment = bottom_left,
+  background = true,
+  border_width = 0,
+  cpu_avg_samples = 2,
+  default_color = 'grey',
+  default_outline_color = 'black',
+  default_shade_color = 'black',
+  draw_borders = false,
+  draw_graph_borders = true,
+  draw_outline = false,
+  draw_shades = false,
+  use_xft = true,
+  font = 'DejaVu Sans Mono:size=8',
+  xftalpha = 0.8,
+  gap_x = 0,
+  gap_y = 20,
+  minimum_height = 5,
+  minimum_width = 5,
+  maximum_width = 450,
+  net_avg_samples = 2,
+  no_buffers = true,
+  text_buffer_size = 1024,
+  out_to_console = false,
+  out_to_stderr = false,
+  extra_newline = false,
+  own_window = true,
+  own_window_argb_value = 200,
+  own_window_argb_visual = true,
+  own_window_transparent = false,
+  own_window_type = normal,
+  own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager,below',
+  stippled_borders = 3,
+  update_interval = 1.5,
+  double_buffer = true,
+  uppercase = false,
+  use_spacer = 'left',
+  pad_percents = 3,
+  temperature_unit = 'celsius',
+  show_graph_scale = false,
+  show_graph_range = false,
+  override_utf8_locale = false,
+}
+
+conky.text = [[
+${font DejaVu Sans Mono:size=10:bold}${color daa520}System ${color}$hr
+${font DejaVu Sans Mono:size=10}${color white}$sysname $kernel ${color} /${color white} $machine
+
+${font DejaVu Sans Mono:size=10:bold}${color daa520}Hardware ${color}$hr
+${font DejaVu Sans Mono:size=10}${color}Uptime:${color white} $uptime
+${color}CPU  Usage:${color white} $cpu% ${color b8860b}${cpubar 4}
+${color}RAM  Usage:${color white} $mem${color b8860b} /${color white}$memmax - $memperc% ${color b8860b}$membar
+${color}Swap Usage:${color white} $swap${color b8860b} /${color white}$swapmax - $swapperc% ${color b8860b} $swapbar
+${color}Disk Usage:${color white} $fs_used${color b8860b} /${color white}$fs_size - $fs_used_perc% ${color b8860b} $fs_bar
+
+${font DejaVu Sans Mono:size=10:bold}${color daa520}Processes ${color}$hr
+${font DejaVu Sans Mono:size=10}${color}Number Processes:${color white} $processes  ${color}Currently Running:${color white} $running_processes
+${font DejaVu Sans Mono:size=8}${color daa520} Name             PID       CPU%     MEM%
+${font DejaVu Sans Mono:size=8}${color} ${top name 1} ${top pid 1}   ${top cpu 1}   ${top mem 1}
+${font DejaVu Sans Mono:size=8}${color} ${top name 2} ${top pid 2}   ${top cpu 2}   ${top mem 2}
+${font DejaVu Sans Mono:size=8}${color} ${top name 3} ${top pid 3}   ${top cpu 3}   ${top mem 3}
+${font DejaVu Sans Mono:size=8}${color} ${top name 4} ${top pid 4}   ${top cpu 4}   ${top mem 4}
+${font DejaVu Sans Mono:size=8}${color} ${top name 5} ${top pid 5}   ${top cpu 5}   ${top mem 5}
+${font DejaVu Sans Mono:size=8}${color} ${top name 6} ${top pid 6}   ${top cpu 6}   ${top mem 6}
+
+$hr
+$hr
+${font DejaVu Sans Mono:size=10:bold}${color daa520}Date & Time ${color}
+${font DejaVu Sans Mono:size=10:bold}${color white}${time %e %B %Y   %A    %I:%M %p}
+$hr
+]]
