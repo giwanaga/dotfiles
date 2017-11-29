@@ -12,10 +12,17 @@ repo = 'Shougo/neomru.vim'
 repo = 'mattn/emmet-vim'
 
 [[plugins]]
+repo = 'Townk/vim-autoclose'
+
+[[plugins]]
 repo = 'Shougo/neosnippet'
 
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
+repo = 'sjl/badwolf'
+hook_add = '''
+  set background=dark
+  au MyAutoCmd VimEnter * nested colorscheme badwolf
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
