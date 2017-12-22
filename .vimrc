@@ -19,7 +19,7 @@ set matchtime=1
 set wrapscan
 set incsearch
 set hlsearch!
-nnoremap <F3> :noh<CR>
+nnoremap <silent><F3> :noh<CR>
 
 
 " EDIT
