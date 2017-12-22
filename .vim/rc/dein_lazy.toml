@@ -8,3 +8,10 @@ on_source = ['unite.vim']
 repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
 
+[[plugins]]
+repo = 'eagletmt/ghcmod-vim'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'pmsorhaindo/syntastic-local-eslint.vim'
+on_ft = 'javascript'

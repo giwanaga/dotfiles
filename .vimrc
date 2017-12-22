@@ -23,7 +23,7 @@ nnoremap <F3> :noh<CR>
 
 
 " EDIT
-set tabstop=2
+set tabstop=8
 set expandtab
 set autoindent
 set smartindent
@@ -35,7 +35,7 @@ set clipboard+=autoselect
 
 
 " ASSIST
-set nrformats=
+set nrformats=hex
 
 
 " DISPLAY
@@ -54,9 +54,6 @@ set virtualedit=onemore
 set visualbell
 let g:indent_guides_enable_on_vim_startup = 1
 
-
-" COLOR
-colorscheme badwolf
 
 
 " Tab
@@ -100,6 +97,7 @@ autocmd FileType help nnoremap <buffer> q <C-w>c
 nnoremap <silent> <Space>ev :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC<CR>
 nnoremap <silent> <Space>ed :<C-u>edit ~/.vim/rc/dein.toml<CR>
+nnoremap <silent> <Space>el :<C-u>edit ~/.vim/rc/dein_lazy.toml<CR>
 augroup MyAutoCmd
 autocmd!
 augroup END
@@ -143,6 +141,9 @@ call dein#install()
 endif
 
 
+" NERDTree
+nnoremap <C-n> :NERDTreeToggle<CR>
+
 " Unite
 let g:unite_source_history_yank_enable=1
 nmap <Space> [unite]
@@ -167,6 +168,14 @@ let g:unite_source_grep_recursive_opt = ''
 vnoremap /g y:Unite grep::-iRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
 
 
+
+" syntastic
+"--------------------
+let g:syntastic_enable_signs = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_checkers_haskell=['hlint']
 
 
 """"""""""""""""""""
@@ -217,6 +226,33 @@ if has('conceal')
 endif
 
 
+" quickrun
+if has('linux64')
+  let g:vimproc_dll_path=  $HOME . '.cache/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_linux64.so'
+endif
+let g:quickrun_config = {
+  \   "_" : {
+  \     'runner' : 'vimproc',
+  \     'runner/vimproc/updatetime' : 60,
+  \     'outputter' : 'error',
+  \     'outputter/error/success' : 'buffer',
+  \     'outputter/error/error' : 'quickfix',
+  \     'outputter/error/split' : ':rightbelow 8sp',
+  \     'outputter/error/close_on_empty' : 1,
+  \   },
+  \   'haskell' : { 'type' : 'haskell/stack' },
+  \   'haskell/stack' : {
+  \     'command' : 'stack',
+  \     'exec' : '%c %o %s %a',
+  \     'cmdopt' : 'runghc',
+  \   },
+  \ }
+let g:quickrun_no_default_key_mappings = 1
+nnoremap <leader>q :write<CR>:QuickRun -mode n<CR>
+xnoremap <leader>q :<C-U>write<CR>gv:QuickRun -mode v<CR>
+nnoremap <expr><silent> <C-c> quickrun#is_running ? quickrun#sweep_sessions() : "\<C-c>"
 
 
+" COLOR
+colorscheme badwolf
 

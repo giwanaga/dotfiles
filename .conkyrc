@@ -1,5 +1,5 @@
 conky.config = {
-  alignment = bottom_left,
+  alignment = 'bottom_right',
   background = true,
   border_width = 0,
   cpu_avg_samples = 2,
@@ -48,10 +48,14 @@ ${font DejaVu Sans Mono:size=10}${color white}$sysname $kernel ${color} /${color
 
 ${font DejaVu Sans Mono:size=10:bold}${color daa520}Hardware ${color}$hr
 ${font DejaVu Sans Mono:size=10}${color}Uptime:${color white} $uptime
-${color}CPU  Usage:${color white} $cpu% ${color b8860b}${cpubar 4}
+${color}CPU  Usage:${color white} $cpu%${color b8860b}${cpubar 4}
 ${color}RAM  Usage:${color white} $mem${color b8860b} /${color white}$memmax - $memperc% ${color b8860b}$membar
-${color}Swap Usage:${color white} $swap${color b8860b} /${color white}$swapmax - $swapperc% ${color b8860b} $swapbar
-${color}Disk Usage:${color white} $fs_used${color b8860b} /${color white}$fs_size - $fs_used_perc% ${color b8860b} $fs_bar
+${color}Swap Usage:${color white} $swap${color b8860b} /${color white}$swapmax - $swapperc% ${color b8860b}$swapbar
+${color}Disk Usage:${color white} $fs_used${color b8860b} /${color white}$fs_size - $fs_used_perc% ${color b8860b}$fs_bar
+
+${font DejaVu Sans Mono:size=10:bold}${color daa520}Network ${color}$hr
+${font DejaVu Sans Mono:size=10}${color}Upload   : ${color white}${upspeed eno1}/s
+${color}Download : ${color white}${downspeed eno1}/s
 
 ${font DejaVu Sans Mono:size=10:bold}${color daa520}Processes ${color}$hr
 ${font DejaVu Sans Mono:size=10}${color}Number Processes:${color white} $processes  ${color}Currently Running:${color white} $running_processes
