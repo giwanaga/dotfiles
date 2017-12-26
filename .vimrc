@@ -10,6 +10,11 @@ filetype plugin indent on
 
 
 set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+set fileformats=unix,dos,mac
+set ambiwidth=double
+
 
 " SEARCH
 set ignorecase
