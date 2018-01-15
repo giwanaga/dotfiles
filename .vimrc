@@ -234,7 +234,10 @@ endif
 " quickrun
 if has('linux64')
   let g:vimproc_dll_path=  $HOME . '.cache/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_linux64.so'
+elseif has('mac')
+  let g:vimproc_dll_path = $HOME . '/.cache/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_mac.so'
 endif
+
 let g:quickrun_config = {
   \   "_" : {
   \     'runner' : 'vimproc',
