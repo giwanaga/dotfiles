@@ -5,7 +5,6 @@ augroup END
 
 " BASIC
 set nocompatible
-syntax enable
 filetype plugin indent on
 
 
@@ -153,6 +152,7 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 let g:unite_source_history_yank_enable=1
 nmap <Space> [unite]
 nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> [unite]n :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
 nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer file_mru<CR>
 nnoremap <silent> [unite]d :<C-u>Unite<Space>directory_mru<CR>
 nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
@@ -181,6 +181,17 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_checkers_haskell=['hlint']
+
+
+" vim-ref
+"--------------------
+let g:ref_source_webdict_sites = {
+\  'stackage' : { 'url' : 'https://www.stackage.org/lts-10.4/hoogle?q=%s' }
+\}
+cnoreabbr refst Ref webdict stackage
+cnoreabbr refstT tabnew \| Ref webdict stackage
+
+
 
 
 """"""""""""""""""""
@@ -259,8 +270,18 @@ let g:quickrun_no_default_key_mappings = 1
 nnoremap <leader>q :write<CR>:QuickRun -mode n<CR>
 xnoremap <leader>q :<C-U>write<CR>gv:QuickRun -mode v<CR>
 nnoremap <expr><silent> <C-c> quickrun#is_running ? quickrun#sweep_sessions() : "\<C-c>"
+cnoreabbr qr QuickRun
+
+
+" FILETYPE
+augroup fileTypeIndent
+  autocmd!
+  autocmd BufNewFile, BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile, BufRead *.hs setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
 
 
 " COLOR
 colorscheme badwolf
+syntax enable
 

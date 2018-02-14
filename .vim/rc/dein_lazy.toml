@@ -13,5 +13,10 @@ repo = 'eagletmt/ghcmod-vim'
 on_ft = 'haskell'
 
 [[plugins]]
+repo = 'thinca/vim-ref'
+on_ft = 'haskell'
+
+[[plugins]]
 repo = 'pmsorhaindo/syntastic-local-eslint.vim'
 on_ft = 'javascript'
+
