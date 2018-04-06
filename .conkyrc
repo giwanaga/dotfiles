@@ -13,8 +13,8 @@ conky.config = {
   use_xft = true,
   font = 'DejaVu Sans Mono:size=8',
   xftalpha = 0.8,
-  gap_x = 0,
-  gap_y = 20,
+  gap_x = 5,
+  gap_y = 10,
   minimum_height = 5,
   minimum_width = 5,
   maximum_width = 450,
@@ -39,7 +39,7 @@ conky.config = {
   temperature_unit = 'celsius',
   show_graph_scale = false,
   show_graph_range = false,
-  override_utf8_locale = false,
+  override_utf8_locale = true,
 }
 
 conky.text = [[
@@ -69,7 +69,8 @@ ${font DejaVu Sans Mono:size=8}${color} ${top name 6} ${top pid 6}   ${top cpu 6
 
 $hr
 $hr
-${font DejaVu Sans Mono:size=10:bold}${color daa520}Date & Time ${color}
-${font DejaVu Sans Mono:size=10:bold}${color white}${time %e %B %Y   %A    %I:%M %p}
+${font Ubuntu:size=10:bold}${color daa520}Date & Time ${color}
+${font DejaVu Sans Mono CJK JP:size=32:bold}${color white}${time   %Y/%m/%d}
+${font DejaVu Sans Mono CJK JP:size=64:bold}${color white}${time   %I:%M }
 ${color}$hr
 ]]
