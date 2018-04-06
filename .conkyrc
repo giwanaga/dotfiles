@@ -25,7 +25,7 @@ conky.config = {
   out_to_stderr = false,
   extra_newline = false,
   own_window = true,
-  own_window_argb_value = 200,
+  own_window_argb_value = 0,
   own_window_argb_visual = true,
   own_window_transparent = false,
   own_window_type = normal,
@@ -70,7 +70,6 @@ ${font DejaVu Sans Mono:size=8}${color} ${top name 6} ${top pid 6}   ${top cpu 6
 $hr
 $hr
 ${font Ubuntu:size=10:bold}${color daa520}Date & Time ${color}
-${font DejaVu Sans Mono CJK JP:size=32:bold}${color white}${time   %Y/%m/%d}
-${font DejaVu Sans Mono CJK JP:size=64:bold}${color white}${time   %I:%M }
-${color}$hr
+${font DejaVu Sans Mono CJK JP:size=32:bold}${color white}${alignr}${time   %Y/%m/%d  }
+${font DejaVu Sans Mono CJK JP:size=64:bold}${color white}${alignr}${time   %I:%M }
 ]]
