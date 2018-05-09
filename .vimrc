@@ -74,8 +74,8 @@ set hidden
 
 
 " remapping
-nnoremap : ;
-nnoremap ; :
+"RE-STANDARDIZED  nnoremap : ;
+"RE-STANDARDIZED  nnoremap ; :
 nnoremap j gj
 nnoremap k gk
 nnoremap s <Nop>
