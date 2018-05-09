@@ -43,4 +43,8 @@ repo = 'scrooloose/nerdtree'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
+[[plugins]]
+repo = 'tyru/open-browser.vim'
 
+[[plugins]]
+repo = 'kannokanno/previm'
