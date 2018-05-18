@@ -93,6 +93,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ez="vim ~/.zshrc"
+alias rz="source ~/.zshrc"
 alias ll="ls -l"
 alias la="ls -la"
 
