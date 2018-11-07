@@ -5,3 +5,9 @@
 2. Make symbolic links
   sh dotfilesLink.sh 
 
+
+##temporary
+ - Terminator Configuration
+   `~/.config/terminator/config`
+
+

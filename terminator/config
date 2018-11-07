@@ -1,0 +1,68 @@
+[global_config]
+  title_inactive_bg_color = "#555753"
+  title_transmit_bg_color = "#3465a4"
+[keybindings]
+  hide_window = F12
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = ba4d8baa-e03e-42b1-908f-697f0f7c9a62
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 39:27
+      size = 1495, 748
+      title = ~
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 815
+      ratio = 0.546979865772
+      type = HPaned
+    [[[child2]]]
+      order = 0
+      parent = child1
+      position = 374
+      ratio = 0.50336473755
+      type = VPaned
+    [[[child5]]]
+      order = 1
+      parent = child1
+      position = 372
+      ratio = 0.50067294751
+      type = VPaned
+    [[[terminal3]]]
+      order = 0
+      parent = child2
+      profile = default
+      type = Terminal
+      uuid = ba4d8baa-e03e-42b1-908f-697f0f7c9a62
+    [[[terminal4]]]
+      order = 1
+      parent = child2
+      profile = default
+      type = Terminal
+      uuid = 9c2f4967-8716-48fd-b277-6bde4b77b943
+    [[[terminal6]]]
+      order = 0
+      parent = child5
+      profile = default
+      type = Terminal
+      uuid = ea0c91ca-0730-4df8-8d60-83643f08a69b
+    [[[terminal7]]]
+      order = 1
+      parent = child5
+      profile = default
+      type = Terminal
+      uuid = fc4a3293-9cdc-4de0-a3bc-34677b294588
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = Meslo LG M DZ for Powerline 12
+    use_system_font = False
