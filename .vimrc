@@ -93,6 +93,7 @@ nnoremap sn gt
 nnoremap sp gT
 nnoremap Y y$
 inoremap <silent> jj <ESC>
+imap <Nul> <Nop>
 
 
 autocmd FileType help nnoremap <buffer> q <C-w>c
