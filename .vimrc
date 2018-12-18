@@ -243,9 +243,15 @@ if has('conceal')
 endif
 
 
+" FILETYPE SETTINGS
+autocmd BufRead,BufNewFile *.java setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd BufRead,BufNewFile *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd BufRead,BufNewFile *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
+
+
 " quickrun
 if has('linux64')
-  let g:vimproc_dll_path=  $HOME . '.cache/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_linux64.so'
+  let g:vimproc_dll_path=  '~/.cache/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_linux64.so'
 elseif has('mac')
   let g:vimproc_dll_path = $HOME . '/.cache/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_mac.so'
 endif
@@ -272,14 +278,6 @@ nnoremap <leader>q :write<CR>:QuickRun -mode n<CR>
 xnoremap <leader>q :<C-U>write<CR>gv:QuickRun -mode v<CR>
 nnoremap <expr><silent> <C-c> quickrun#is_running ? quickrun#sweep_sessions() : "\<C-c>"
 cnoreabbr qr QuickRun
-
-
-" FILETYPE
-augroup fileTypeIndent
-  autocmd!
-  autocmd BufNewFile, BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd BufNewFile, BufRead *.hs setlocal tabstop=4 softtabstop=4 shiftwidth=4
-augroup END
 
 
 " open-browser.vim
