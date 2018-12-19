@@ -1,12 +1,40 @@
-" INITIALIZE 
+if !&compatible
+  set nocompatible
+endif
+
 augroup MyAutoCmd
   autocmd!
 augroup END
 
-" BASIC
-set nocompatible
-filetype plugin indent on
 
+" <GIWA WK @ 2018/12/19>
+" dein.vim {{{
+"  dein install
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
+"  read plugins and create cache
+let s:toml_file      = fnamemodify(expand('<sfile>'), ':h').'/.vim/rc/dein.toml'
+let s:toml_lazy_file = fnamemodify(expand('<sfile>'), ':h').'/.vim/rc/dein_lazy.toml'
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  call dein#load_toml(s:toml_file,      {'lazy': 0})
+  call dein#load_toml(s:toml_lazy_file, {'lazy': 1})
+  call dein#end()
+  call dein#save_state()
+endif
+"  install lacked plugins
+if has('vim_starting') && dein#check_install()
+  call dein#install()
+endif
+" dein.vim }}}
+
+
+filetype plugin indent on
 
 set encoding=utf-8
 set fileencoding=utf-8
@@ -27,7 +55,6 @@ nnoremap <silent><F3> :noh<CR>
 
 
 " EDIT
-set tabstop=8
 set expandtab
 set autoindent
 set smartindent
@@ -110,40 +137,40 @@ autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
 
 
 " Plugin
-if !&compatible
-set nocompatible
-endif
-augroup MyAutoCmd
-autocmd!
-augroup END
+"if !&compatible
+"set nocompatible
+"endif
+"augroup MyAutoCmd
+"autocmd!
+"augroup END
+"
+"let s:dein_dir = expand('~/.cache/dein')
+"let s:dein_repo_dir = s:dein_dir . '/.vim/dein/repos/github.com/Shougo/dein.vim'
+"
+"if &runtimepath !~# '/dein.vim'
+"if !isdirectory(s:dein_repo_dir)
+"  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+"endif
+"execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+"endif
+"
+"if dein#load_state(s:dein_dir)
+"call dein#begin(s:dein_dir)
+"
+"let g:rc_dir    = expand('~/.vim/rc')
+"let s:toml      = g:rc_dir . '/dein.toml'
+"let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
-let s:dein_dir = expand('~/.cache/dein')
-let s:dein_repo_dir = s:dein_dir . '/.vim/dein/repos/github.com/Shougo/dein.vim'
+"call dein#load_toml(s:toml,      {'lazy': 0})
+"call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-if &runtimepath !~# '/dein.vim'
-if !isdirectory(s:dein_repo_dir)
-  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-endif
-execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-endif
+"call dein#end()
+"call dein#save_state()
+"endif
 
-if dein#load_state(s:dein_dir)
-call dein#begin(s:dein_dir)
-
-let g:rc_dir    = expand('~/.vim/rc')
-let s:toml      = g:rc_dir . '/dein.toml'
-let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
-call dein#load_toml(s:toml,      {'lazy': 0})
-call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-call dein#end()
-call dein#save_state()
-endif
-
-if dein#check_install()
-call dein#install()
-endif
+"if dein#check_install()
+"call dein#install()
+"endif
 
 
 " NERDTree
@@ -245,11 +272,37 @@ endif
 
 " FILETYPE SETTINGS
 autocmd BufRead,BufNewFile *.java setlocal tabstop=4 softtabstop=4 shiftwidth=4
-autocmd BufRead,BufNewFile *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
-autocmd BufRead,BufNewFile *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.py   setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd BufRead,BufNewFile *.js   setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 
-" quickrun
+
+
+" open-browser.vim
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-searchlet g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search))
+
+
+" previm
+augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+cnoreabbr pv PrevimOpen
+
+
+" COLOR
+colorscheme badwolf
+syntax enable
+
+
+
+
+
+" quickrun {{{
 if has('linux64')
   let g:vimproc_dll_path=  '~/.cache/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_linux64.so'
 elseif has('mac')
@@ -278,25 +331,4 @@ nnoremap <leader>q :write<CR>:QuickRun -mode n<CR>
 xnoremap <leader>q :<C-U>write<CR>gv:QuickRun -mode v<CR>
 nnoremap <expr><silent> <C-c> quickrun#is_running ? quickrun#sweep_sessions() : "\<C-c>"
 cnoreabbr qr QuickRun
-
-
-" open-browser.vim
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-searchlet g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search))
-
-
-" previm
-augroup PrevimSettings
-  autocmd!
-  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
-cnoreabbr pv PrevimOpen
-
-
-" COLOR
-colorscheme badwolf
-syntax enable
-
+" quickrun }}}
