@@ -1,12 +1,3 @@
-if !&compatible
-  set nocompatible
-endif
-
-augroup MyAutoCmd
-  autocmd!
-augroup END
-
-
 " <GIWA WK @ 2018/12/19>
 " dein.vim {{{
 "  dein install
@@ -134,10 +125,10 @@ nnoremap <silent> <Space>ev :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC<CR>
 nnoremap <silent> <Space>ed :<C-u>edit ~/.vim/rc/dein.toml<CR>
 nnoremap <silent> <Space>el :<C-u>edit ~/.vim/rc/dein_lazy.toml<CR>
-augroup MyAutoCmd
-autocmd!
+augroup editvimrc
+  autocmd!
 augroup END
-autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+autocmd editvimrc BufWritePost $MYVIMRC nested source $MYVIMRC
 
 
 " Plugin
