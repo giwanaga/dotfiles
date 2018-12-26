@@ -1,4 +1,9 @@
-" <GIWA WK @ 2018/12/19>
+" augroup for plugin (used in dein.toml)
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+
 " dein.vim {{{
 "  dein install
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
