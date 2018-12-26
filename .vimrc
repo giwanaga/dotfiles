@@ -103,6 +103,10 @@ set hidden
 " remapping
 "RE-STANDARDIZED  nnoremap : ;
 "RE-STANDARDIZED  nnoremap ; :
+nnoremap <C-J> G
+nnoremap <C-K> gg
+nnoremap <C-H> ^
+nnoremap <C-L> $
 nnoremap j gj
 nnoremap k gk
 nnoremap s <Nop>
