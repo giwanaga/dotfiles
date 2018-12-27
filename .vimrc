@@ -82,12 +82,12 @@ set visualbell
 let g:indent_guides_enable_on_vim_startup = 1
 
 
-
 " Tab
 set list listchars=tab:\>\-
 set expandtab
 set tabstop=2
 set shiftwidth=2
+
 
 " FILE
 set nobackup
@@ -134,6 +134,10 @@ augroup editvimrc
   autocmd!
   autocmd editvimrc BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
+
+
+" Japanese Help (requires vim-jp/vimdoc-ja)
+:set helplang=ja,en
 
 
 " NERDTree

@@ -25,8 +25,10 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'crusoexia/vim-monokai'
 
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -48,3 +50,6 @@ repo = 'tyru/open-browser.vim'
 
 [[plugins]]
 repo = 'kannokanno/previm'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
