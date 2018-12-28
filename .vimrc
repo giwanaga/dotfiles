@@ -276,14 +276,6 @@ augroup END
 cnoreabbr pv PrevimOpen
 
 
-" COLOR
-colorscheme badwolf
-syntax enable
-
-
-
-
-
 " quickrun {{{
 if has('linux64')
   let g:vimproc_dll_path=  '~/.cache/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_linux64.so'
