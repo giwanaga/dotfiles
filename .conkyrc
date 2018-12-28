@@ -53,6 +53,8 @@ ${color}RAM  Usage:${color white} $mem${color b8860b} /${color white}$memmax - $
 ${color}Swap Usage:${color white} $swap${color b8860b} /${color white}$swapmax - $swapperc% ${color b8860b}$swapbar
 ${color}Disk Usage:${color white} $fs_used${color b8860b} /${color white}$fs_size - $fs_used_perc% ${color b8860b}$fs_bar
 
+${font DejaVu sans Mono:size=10:bold}${color}Battery $battery_short ($battery_time)
+
 ${font DejaVu Sans Mono:size=10:bold}${color daa520}Network ${color}$hr
 ${font DejaVu Sans Mono:size=10}${color}Upload   : ${color white}${upspeed eno1}/s
 ${color}Download : ${color white}${downspeed eno1}/s
