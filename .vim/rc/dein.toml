@@ -53,3 +53,6 @@ repo = 'kannokanno/previm'
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'thinca/vim-scouter'

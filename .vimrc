@@ -121,7 +121,7 @@ nnoremap sp gT
 nnoremap Y y$
 inoremap <silent> jj <ESC>
 imap <Nul> <Nop>
-
+let g:mapleader = ',' 
 
 autocmd FileType help nnoremap <buffer> q <C-w>c
 
@@ -308,3 +308,9 @@ xnoremap <leader>q :<C-U>write<CR>gv:QuickRun -mode v<CR>
 nnoremap <expr><silent> <C-c> quickrun#is_running ? quickrun#sweep_sessions() : "\<C-c>"
 cnoreabbr qr QuickRun
 " quickrun }}}
+
+
+" beta {{{
+nnoremap <leader>wy :set wrap<CR>
+nnoremap <leader>wn :set nowrap<CR>
+" beta }}}
