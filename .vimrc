@@ -58,7 +58,9 @@ set backspace=indent,eol,start
 set wildmenu
 set formatoptions+=mM
 set wildmode=list:longest
-set clipboard+=autoselect
+if !has('nvim')
+  set clipboard+=autoselect
+endif
 
 
 " ASSIST
