@@ -112,7 +112,9 @@ set hidden
 nnoremap <C-J> G
 nnoremap <C-K> gg
 nnoremap <C-H> ^
+vnoremap <C-H> ^
 nnoremap <C-L> $
+vnoremap <C-L> $
 nnoremap j gj
 nnoremap k gk
 nnoremap s <Nop>
@@ -125,7 +127,7 @@ nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
 nnoremap st :<C-u>tabnew<CR>
-nnoremap sT :<C-u>Unite tab<CR>
+" nnoremap sT :<C-u>Unite tab<CR>
 nnoremap sn gt
 nnoremap sp gT
 nnoremap Y y$
@@ -152,29 +154,32 @@ augroup END
 nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Unite
-let g:unite_source_history_yank_enable=1
-nmap <Space> [unite]
-nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> [unite]n :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
-nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer file_mru<CR>
-nnoremap <silent> [unite]d :<C-u>Unite<Space>directory_mru<CR>
-nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
-nnoremap <silent> [unite]r :<C-u>Unite<Space>register<CR>
-nnoremap <silent> [unite]t :<C-u>Unite<Space>tab<CR>
-nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
-nnoremap <silent> [unite]o :<C-u>Unite<Space>outline<CR>
-nnoremap <silent> [unite]<CR> :<C-u>Unite<Space>file_rec:!<CR>
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"{{{
-  nmap <buffer> <ESC> <Plug>(unite_exit)
-endfunction"}}}
+" let g:unite_source_history_yank_enable=1
+" nmap <Space> [unite]
+" nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" nnoremap <silent> [unite]n :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
+" nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer file_mru<CR>
+" nnoremap <silent> [unite]d :<C-u>Unite<Space>directory_mru<CR>
+" nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
+" nnoremap <silent> [unite]r :<C-u>Unite<Space>register<CR>
+" nnoremap <silent> [unite]t :<C-u>Unite<Space>tab<CR>
+" nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
+" nnoremap <silent> [unite]o :<C-u>Unite<Space>outline<CR>
+" nnoremap <silent> [unite]<CR> :<C-u>Unite<Space>file_rec:!<CR>
+" autocmd FileType unite call s:unite_my_settings()
+" function! s:unite_my_settings()"{{{
+"   nmap <buffer> <ESC> <Plug>(unite_exit)
+" endfunction"}}}
 " ag for Unite
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nocolor --nogroup'
-let g:unite_source_grep_max_candidates = 200
-let g:unite_source_grep_recursive_opt = ''
-vnoremap /g y:Unite grep::-iRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+" let g:unite_source_grep_command = 'ag'
+" let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+" let g:unite_source_grep_max_candidates = 200
+" let g:unite_source_grep_recursive_opt = ''
+" vnoremap /g y:Unite grep::-iRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
 
+
+" Denite.nvim {{{
+" Denite.nvim }}}
 
 
 " syntastic
@@ -240,6 +245,11 @@ if has('syntax')
   augroup END
   call ShowToge()
 endif
+
+
+" deoplete
+let g:deoplete#enable_at_startup=1
+let g:deoplete#auto_completion_start_length=1
 
 
 " neosnippet
