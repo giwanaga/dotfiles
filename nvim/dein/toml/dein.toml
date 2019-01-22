@@ -5,8 +5,8 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/unite.vim'
 
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
+#[[plugins]]
+#repo = 'Shougo/deoplete.nvim'
 
 [[plugins]]
 repo = 'Shougo/deoppet.nvim'
@@ -83,3 +83,6 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'tpope/vim-repeat'
+
+#[[plugins]]
+#repo = 'Shougo/deol.nvim'

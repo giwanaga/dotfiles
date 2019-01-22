@@ -75,7 +75,7 @@ endif
 set nrformats=hex
 
 
-" DISPLAY
+" DISPLAY"
 set number
 set ruler
 set list
@@ -179,6 +179,34 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 
 
 " Denite.nvim {{{
+if has('nvim')
+  let g:denite_source_history_yank_enable=1
+  let g:denite_source_file_mru_limit=200
+
+  nmap <Space> [denite]
+  nnoremap <silent> [denite]f :<C-u>DeniteBufferDir -mode=normal -direction=topleft -cursor-wrap=true file file:new<CR>
+  nnoremap <silent> [denite]d :<C-u>Denite -mode=normal directory_rec<CR>
+  nnoremap <silent> [denite]b :<C-u>Denite -mode=normal -direction=topleft -cursor-wrap=true buffer<CR>
+  nnoremap <silent> [denite]r :<C-u>Denite -mode=normal -direction=topleft -cursor-wrap=true -buffer-name=register register<CR>
+  nnoremap <silent> [denite]m :<C-u>Denite -mode=normal -direction=topleft -cursor-wrap=true file_mru<CR>
+  nnoremap <silent> [denite]c :<C-u>Denite -mode=normal -direction=topleft -cursor-wrap=true bookmark<CR>
+  nnoremap <silent> [denite]a :<C-u>DeniteBookmarkAdd<CR>
+  nnoremap <silent> [denite]g :<C-u>Denite grep -mode=normal<CR>
+  nnoremap <silent> [denite]y :<C-u>Denite -mode=normal neoyank<CR>
+
+  call denite#custom#map('normal', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+  call denite#custom#map('normal', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+  call denite#custom#map('normal', '<C-w>', '<denite:move_up_path>', 'noremap')
+  call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+  call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+  call denite#custom#map('insert', '<C-w>', '<denite:move_up_path>', 'noremap')
+
+  call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+  call denite#custom#var('grep', 'command', ['ag'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', [])
+  call denite#custom#var('grep', 'default_opts', ['--follow', '--no-group', '--no-color'])
+endif
 " Denite.nvim }}}
 
 
