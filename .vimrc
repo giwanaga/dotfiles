@@ -99,31 +99,34 @@ set hidden
 
 
 " remapping
+"
+" command         NORMAL  | INSERT  | COMMAND | VISUAL  
+" ------------------------+---------+---------+---------
+" map /noremap    X       | -       | -       | X      
+" nmap/nnoremap   X       | -       | -       | -      
+" imap/inoremap   -       | X       | -       | -      
+" cmap/cnoremap   -       | -       | X       | -      
+" vmap/vnoremap   -       | -       | -       | X      
+" map!/noremap!   -       | X       | X       | -      
+"
 "RE-STANDARDIZED  nnoremap : ;
 "RE-STANDARDIZED  nnoremap ; :
-nnoremap <C-J> G
-nnoremap <C-K> gg
-nnoremap <C-H> ^
-nnoremap <C-L> $
+noremap <C-J> <C-E>
+noremap <C-K> <C-Y>
+noremap <C-H> ^
+noremap <C-L> $
 nnoremap j gj
 nnoremap k gk
 nnoremap s <Nop>
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap sh <C-w>h
-nnoremap sJ <C-w>J
-nnoremap sK <C-w>K
-nnoremap sL <C-w>L
-nnoremap sH <C-w>H
 nnoremap st :<C-u>tabnew<CR>
 nnoremap sT :<C-u>Unite tab<CR>
 nnoremap sn gt
 nnoremap sp gT
 nnoremap Y y$
-inoremap <silent> jj <ESC>
 imap <Nul> <Nop>
 let g:mapleader = ',' 
+nnoremap <C-W>y :set wrap<CR>
+nnoremap <C-W>n :set nowrap<CR>
 
 autocmd FileType help nnoremap <buffer> q <C-w>c
 
@@ -313,6 +316,4 @@ cnoreabbr qr QuickRun
 
 
 " beta {{{
-nnoremap <leader>wy :set wrap<CR>
-nnoremap <leader>wn :set nowrap<CR>
 " beta }}}
