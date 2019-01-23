@@ -73,6 +73,8 @@ set wildmenu
 set formatoptions+=mM
 set wildmode=list:longest
 set nrformats=hex
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 " DISPLAY
 set number
@@ -137,6 +139,17 @@ nnoremap <silent> [denite]b : <C-u>Denite -mode=normal -direction=topleft buffer
 nnoremap <silent> [denite]d : <C-u>Denite -mode=normal -direction=topleft directory_rec<CR>
 " Denite.nvim }}}
 
+" snippet controls {{{
+"  neosnippet key-mappings
+imap <C-a> <Plug>(neosnippet_expand_or_jump)
+smap <C-a> <Plug>(neosnippet_expand_or_jump)
+xmap <C-a> <Plug>(neosnippet_expand_target)
+"  neosnippet for snippet_complete marker
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+" snippet controls }}}
+
 " incsearch.vim {{{
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -192,6 +205,16 @@ let g:syntastic_mode_map = {
     \ 'passive_filetypes': [],
     \ }
 " syntastic }}}
+
+" markdown preview {{{
+let g:netrw_nogx=1
+nmap gx <Plug>(openbrowser-smart-search)
+augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+cnoreabbr pv PrevimOpen
+" markdown preview {{{
 
 " OWN FUNC
 " Zenkaku Space {{{

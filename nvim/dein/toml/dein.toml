@@ -8,6 +8,15 @@ repo = 'Shougo/neomru.vim'
 repo = 'Shougo/denite.nvim'
 
 [[plugins]]
+repo = 'Shougo/deoppet.nvim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
 repo = 'scrooloose/syntastic'
 
 [[plugins]]
