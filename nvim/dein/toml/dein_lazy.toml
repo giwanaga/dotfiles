@@ -1,21 +1,12 @@
 [[plugins]]
-repo = 'Shougo/denite.nvim'
+repo = 'davidhalter/jedi-vim'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
 on_if = 1
 on_event = 'TextYankPost'
 on_source = ['unite.vim']
-
-[[plugins]]
-repo = 'davidhalter/jedi-vim'
-on_ft = 'python'
-
-[[plugins]]
-repo = 'eagletmt/ghcmod-vim'
-on_ft = 'haskell'
-
-[[plugins]]
-repo = 'thinca/vim-ref'
-on_ft = 'haskell'
-
