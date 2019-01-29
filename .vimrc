@@ -14,8 +14,8 @@ if !isdirectory(s:dein_repo_dir)
 endif
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
 "  read plugins and create cache
-let s:toml_file      = fnamemodify(expand('<sfile>'), ':h').'/.vim/rc/dein.toml'
-let s:toml_lazy_file = fnamemodify(expand('<sfile>'), ':h').'/.vim/rc/dein_lazy.toml'
+let s:toml_file      = '~/.vim/rc/dein.toml'
+let s:toml_lazy_file = '~/.vim/rc/dein_lazy.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#load_toml(s:toml_file,      {'lazy': 0})
