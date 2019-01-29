@@ -3,7 +3,7 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-autocmd FileType help nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd FileType help nnoremap <buffer> q <C-w>c
 
 " Shortcut for Configuration Files
 nnoremap <silent> <Space>ev :<C-u>edit $MYVIMRC<CR>
@@ -49,12 +49,16 @@ nnoremap <silent> <Space>el :<C-u>edit `=g:toml_lazy`<CR>
 filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
+scriptencoding utf-8
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac
 set ambiwidth=double
-autocmd BufRead,BufNewFile *.java setlocal tabstop=4 softtabstop=4 shiftwidth=4
-autocmd BufRead,BufNewFile *.py   setlocal tabstop=4 softtabstop=4 shiftwidth=4
-autocmd BufRead,BufNewFile *.js   setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup FileTypeIndent
+  autocmd!
+  autocmd FileType java        setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType python      setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType javascript  setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
 
 " SEARCH
 set ignorecase
@@ -62,7 +66,7 @@ set smartcase
 set showmatch
 set matchtime=1
 set wrapscan
-nnoremap <silent><F3> :noh<CR>
+nnoremap <silent><F3> :<C-u>noh<CR>
 
 " FORMAT
 set expandtab
@@ -106,7 +110,7 @@ set hidden
 
 " Move and Edit
 noremap <C-j> <C-e>
-noremap <c-K> <c-y>
+noremap <C-k> <C-y>
 noremap <C-h> ^
 noremap <C-l> $
 nnoremap j gj
@@ -117,8 +121,7 @@ imap <Nul> <Nop>
 let g:mapleader = ','
 
 " Window and Tab control
-nnoremap <C-W>y :set wrap<CR>
-nnoremap <C-W>n :set nowrap<CR>
+nnoremap <silent><C-W>r :set wrap!<CR>
 nnoremap s <Nop>
 nnoremap st : <C-u>tabnew<CR>
 nnoremap sn gt
@@ -144,11 +147,26 @@ nnoremap <silent> [denite]d : <C-u>Denite -mode=normal -direction=topleft direct
 imap <C-a> <Plug>(neosnippet_expand_or_jump)
 smap <C-a> <Plug>(neosnippet_expand_or_jump)
 xmap <C-a> <Plug>(neosnippet_expand_target)
+imap <expr><TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ neosnippet#expandable_or_jumpable() ?
+  \   "\<Plug>(neosnippet_expand_or_jump" : "\<TAB>"
+smap <expr><TAB>
+  \ pumvisible() neosnippet#expandable_or_jumpable() ?
+  \   "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><CR>
+  \ (pumvisible() && neosnippet#expandable()) ?
+  \   "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
 "  neosnippet for snippet_complete marker
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 " snippet controls }}}
+
+" deoplete.nvim {{{
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+" deoplete.nvim }}}
 
 " incsearch.vim {{{
 map /  <Plug>(incsearch-forward)
