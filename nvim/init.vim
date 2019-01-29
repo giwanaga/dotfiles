@@ -119,6 +119,7 @@ nnoremap Y y$
 inoremap <silent> jj <ESC
 imap <Nul> <Nop>
 let g:mapleader = ','
+set inccommand=split
 
 " Window and Tab control
 nnoremap <silent><C-W>r :set wrap!<CR>
