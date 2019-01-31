@@ -109,10 +109,11 @@ set autoread
 set hidden
 
 " Move and Edit
+nnoremap ZQ <Nop>
 noremap <C-j> <C-e>
 noremap <C-k> <C-y>
-noremap <C-h> ^
-noremap <C-l> $
+noremap <C-h> zh
+noremap <C-l> zl
 nnoremap j gj
 nnoremap k gk
 nnoremap Y y$
@@ -201,8 +202,8 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " vim-easymotion }}}
 
 " edgemotion {{{
-map <C-n> <Plug>(edgemotion-j)
-map <C-m> <Plug>(edgemotion-k)
+map {{ <Plug>(edgemotion-k)
+map }} <Plug>(edgemotion-j)
 " edgemotion }}}
 
 " syntastic {{{
@@ -262,6 +263,11 @@ if has('syntax')
   call ShowToge()
 endif
 " ShowToge }}}
+
+" help
+set keywordprg=:help
+cnoreabbr hv tab help usr_41.txt
+cnoreabbr he tab help eval.txt
 
 " Finally
 syntax enable
