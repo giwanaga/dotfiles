@@ -97,7 +97,6 @@ set visualbell
 let g:indent_guides_enable_on_vim_startup = 1
 
 " Tab
-set list listchars=tab:\>\-
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -108,14 +107,16 @@ set noswapfile
 set autoread
 set hidden
 
-" Move and Edit
-nnoremap ZQ <Nop>
+" Ctrl-jhkl to scroll by a step
 noremap <C-j> <C-e>
 noremap <C-k> <C-y>
 noremap <C-h> zh
 noremap <C-l> zl
+" Move
 nnoremap j gj
 nnoremap k gk
+" Edit
+nnoremap ZQ <Nop>
 nnoremap Y y$
 inoremap <silent> jj <ESC
 imap <Nul> <Nop>
@@ -129,10 +130,9 @@ nnoremap st : <C-u>tabnew<CR>
 nnoremap sn gt
 nnoremap sp gT
 
-" MISCELLANOUS PLUGIN CONFIGURATION {{{
+" NERDTree {{{
 nnoremap <silent> <C-N> :NERDTreeToggle<CR>
-:set helplang=ja,en
-" MISCELLANOUS PLUGIN CONFIGURATION }}}
+" NERDTree }}}
 
 " Denite.nvim {{{
 let g:denite_source_history_yank_enable=1
@@ -265,6 +265,7 @@ endif
 " ShowToge }}}
 
 " help
+:set helplang=ja,en
 set keywordprg=:help
 cnoreabbr hv tab help usr_41.txt
 cnoreabbr he tab help eval.txt
