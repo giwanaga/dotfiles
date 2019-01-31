@@ -28,7 +28,7 @@ if !isdirectory(s:dein_repo_dir)
   call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
 "  path
-let &runtimepath = s:dein_repo_dir . "," . &runtimepath
+let &runtimepath = s:dein_repo_dir . ',' . &runtimepath
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#load_toml(g:toml_file, {'lazy': 0})
@@ -124,7 +124,7 @@ let g:mapleader = ','
 set inccommand=split
 
 " Window and Tab control
-nnoremap <silent><C-W>r :set wrap!<CR>
+nnoremap <silent><C-W>r :set wrap!<CR>:set wrap?<CR>
 nnoremap s <Nop>
 nnoremap st : <C-u>tabnew<CR>
 nnoremap sn gt
