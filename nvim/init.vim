@@ -315,6 +315,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
 " vim-airline }}}
 
+" fugitive {{{
+nmap [fugitive] <Nop>
+map <Leader>g [fugitive]
+nnoremap <silent> [fugitive]s :<C-u>Gstatus<CR>
+set diffopt+=vertical
+nnoremap <silent> [fugitive]d :<C-u>Gdiff<CR>
+nnoremap <silent> [fugitive]b :<C-u>Gblame<CR>
+nnoremap <silent> [fugitive]l :<C-u>Glog<CR>
+" fugitive }}}
 
 " Finally
 syntax enable
