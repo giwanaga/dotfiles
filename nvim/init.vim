@@ -139,9 +139,11 @@ let g:denite_source_history_yank_enable=1
 let g:denite_source_file_mru_limit=200
 
 nmap <Space> [denite]
-nnoremap <silent> [denite]f : <C-u>Denite -mode=normal -direction=topleft file_mru<CR>
-nnoremap <silent> [denite]b : <C-u>Denite -mode=normal -direction=topleft buffer<CR>
-nnoremap <silent> [denite]d : <C-u>Denite -mode=normal -direction=topleft directory_rec<CR>
+nnoremap <silent> [denite]f :<C-u>Denite -mode=normal -direction=topleft file_mru<CR>
+nnoremap <silent> [denite]b :<C-u>Denite -mode=normal -direction=topleft buffer<CR>
+nnoremap <silent> [denite]d :<C-u>Denite -mode=normal -direction=topleft directory_rec<CR>
+
+nnoremap <silent> [denite]o :<C-u>Denite outline -direction=topleft -highlight-mode-insert=Search<CR>
 " Denite.nvim }}}
 
 " snippet controls {{{
@@ -292,6 +294,27 @@ endif
 set keywordprg=:help
 cnoreabbr hv tab help usr_41.txt
 cnoreabbr he tab help eval.txt
+
+
+" vim-airline {{{
+" let g:airline_mode_map = {
+"   \ '  ' : '-',
+"   \ 'n'  : 'N',
+"   \ 'i'  : 'I',
+"   \ 'R'  : 'R',
+"   \ 'c'  : 'C',
+"   \ 'v'  : 'V',
+"   \ 'V'  : 'V',
+"   \ 's'  : 'S',
+"   \ 'S'  : 'S',
+"   \ ''   : 'S',
+"   \ }
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'badwolf'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+" vim-airline }}}
+
 
 " Finally
 syntax enable

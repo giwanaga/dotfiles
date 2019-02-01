@@ -1,4 +1,3 @@
-[[plugins]]
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
@@ -28,8 +27,17 @@ repo = 'thinca/vim-quickrun'
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 
+#[[plugins]]
+#repo = 'itchyny/lightline.vim'
+
+#[[plugins]]
+#repo = 'powerline/powerline'
+
 [[plugins]]
-repo = 'itchyny/lightline.vim'
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'Townk/vim-autoclose'
