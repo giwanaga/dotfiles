@@ -93,7 +93,7 @@ set title
 set cursorline
 set cursorcolumn
 set virtualedit=onemore
-set visualbell
+set vb t_vb=
 let g:indent_guides_enable_on_vim_startup = 1
 
 " Tab
@@ -148,9 +148,9 @@ nnoremap <silent> [denite]o :<C-u>Denite outline -direction=topleft -highlight-m
 
 " snippet controls {{{
 "  neosnippet key-mappings
-imap <C-a> <Plug>(neosnippet_expand_or_jump)
-smap <C-a> <Plug>(neosnippet_expand_or_jump)
-xmap <C-a> <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 imap <expr><TAB>
   \ pumvisible() ? "\<C-n>" :
   \ neosnippet#expandable_or_jumpable() ?
@@ -165,6 +165,7 @@ imap <expr><CR>
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+let g:neosnippet#snippets_directory = s:cache_home . "/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets"
 " snippet controls }}}
 
 " deoplete.nvim {{{
