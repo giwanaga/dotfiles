@@ -118,7 +118,7 @@ nnoremap k gk
 " Edit
 nnoremap ZQ <Nop>
 nnoremap Y y$
-inoremap <silent> jj <ESC
+inoremap <silent> jj <ESC>
 imap <Nul> <Nop>
 let g:mapleader = ','
 set inccommand=split
