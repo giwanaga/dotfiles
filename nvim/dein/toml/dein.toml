@@ -7,6 +7,9 @@ repo = 'Shougo/neomru.vim'
 repo = 'Shougo/denite.nvim'
 
 [[plugins]]
+repo = 'Shougo/defx.nvim'
+
+[[plugins]]
 repo = 'Shougo/deoppet.nvim'
 
 [[plugins]]
