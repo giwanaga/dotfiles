@@ -312,7 +312,7 @@ endif
 " Zenkaku Space }}}
 " ShowToge {{{
 function! ShowToge()
-  highlight ShowToge ctermfg=magenta guifg=magenta
+  highlight ShowToge ctermfg=lightgreen guifg=magenta
 endfunction
 if has('syntax')
   augroup ShowToge
@@ -320,7 +320,7 @@ if has('syntax')
     autocmd ColorScheme * call ShowToge()
     autocmd VimEnter,WinEnter,BufRead * match ShowToge /[,;=]/
   augroup END
-  call ShowToge()
+  "call ShowToge()
 endif
 " ShowToge }}}
 
