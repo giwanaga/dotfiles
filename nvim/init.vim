@@ -320,7 +320,7 @@ if has('syntax')
     autocmd ColorScheme * call ShowToge()
     autocmd VimEnter,WinEnter,BufRead * match ShowToge /[,;=]/
   augroup END
-  "call ShowToge()
+  call ShowToge()
 endif
 " ShowToge }}}
 
