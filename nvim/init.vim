@@ -101,10 +101,11 @@ set virtualedit=onemore
 set vb t_vb=
 let g:indent_guides_enable_on_vim_startup = 1
 
-" Tab
+" space control
 set expandtab
 set tabstop=2
 set shiftwidth=2
+let g:vim_indent_cont = 8
 
 " ViM file control
 set nobackup
@@ -191,15 +192,15 @@ imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
 imap <expr><TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ neosnippet#expandable_or_jumpable() ?
-  \   "\<Plug>(neosnippet_expand_or_jump" : "\<TAB>"
+        \ pumvisible() ? "\<C-n>" :
+        \ neosnippet#expandable_or_jumpable() ?
+        \   "\<Plug>(neosnippet_expand_or_jump" : "\<TAB>"
 smap <expr><TAB>
-  \ pumvisible() neosnippet#expandable_or_jumpable() ?
-  \   "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+        \ pumvisible() neosnippet#expandable_or_jumpable() ?
+        \   "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 imap <expr><CR>
-  \ (pumvisible() && neosnippet#expandable()) ?
-  \   "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
+        \ (pumvisible() && neosnippet#expandable()) ?
+        \   "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
 "  neosnippet for snippet_complete marker
 if has('conceal')
   set conceallevel=2 concealcursor=i
@@ -262,10 +263,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_mode_map = {
-    \ 'mode': 'active',
-    \ 'active_filetypes': ['javascript'],
-    \ 'passive_filetypes': [],
-    \ }
+        \ 'mode': 'active',
+        \ 'active_filetypes': ['javascript'],
+        \ 'passive_filetypes': [],
+        \ }
 " syntastic }}}
 
 " markdown preview {{{
@@ -284,16 +285,16 @@ if has('unix')
   let g:vimproc_dll_path= s:cache_home . '/dein/repos/github.com/Shougo/vimproc.vim/lib/vimproc_linux64.so'
 endif
 let g:quickrun_config = {
-  \   "_" : {
-  \     'runner' : 'vimproc',
-  \     'runner/vimproc/updatetime' : 60,
-  \     'outputter' : 'error',
-  \     'outputter/error/success' : 'buffer',
-  \     'outputter/error/error' : 'quickfix',
-  \     'outputter/error/split' : ':rightbelow 8sp',
-  \     'outputter/error/close_on_empty' : 1,
-  \   },
-  \ }
+        \   "_" : {
+        \     'runner' : 'vimproc',
+        \     'runner/vimproc/updatetime' : 60,
+        \     'outputter' : 'error',
+        \     'outputter/error/success' : 'buffer',
+        \     'outputter/error/error' : 'quickfix',
+        \     'outputter/error/split' : ':rightbelow 8sp',
+        \     'outputter/error/close_on_empty' : 1,
+        \   },
+        \ }
 let g:quickrun_no_default_key_mappings = 1
 nnoremap <Leader>q :<C-u>write<CR>:QuickRun -mode n<CR>
 xnoremap <Leader>q :<C-u>write<CR>gv:QuickRun -mode v<CR>
@@ -331,35 +332,35 @@ endif
 
 " ins-completion help {{{
 let s:compl_key_dict = {
-      \ char2nr("\<C-l>"): "\<C-x>\<C-l>",
-      \ char2nr("\<C-n>"): "\<C-x>\<C-n>",
-      \ char2nr("\<C-p>"): "\<C-x>\<C-p>",
-      \ char2nr("\<C-k>"): "\<C-x>\<C-k>",
-      \ char2nr("\<C-t>"): "\<C-x>\<C-t>",
-      \ char2nr("\<C-i>"): "\<C-x>\<C-i>",
-      \ char2nr("\<C-]>"): "\<C-x>\<C-]>",
-      \ char2nr("\<C-f>"): "\<C-x>\<C-f>",
-      \ char2nr("\<C-d>"): "\<C-x>\<C-d>",
-      \ char2nr("\<C-v>"): "\<C-x>\<C-v>",
-      \ char2nr("\<C-u>"): "\<C-x>\<C-u>",
-      \ char2nr("\<C-o>"): "\<C-x>\<C-o>",
-      \ char2nr('s'): "\<C-x>s",
-      \ char2nr("\<C-s>"): "\<C-x>s",
-      \}
+        \ char2nr("\<C-l>"): "\<C-x>\<C-l>",
+        \ char2nr("\<C-n>"): "\<C-x>\<C-n>",
+        \ char2nr("\<C-p>"): "\<C-x>\<C-p>",
+        \ char2nr("\<C-k>"): "\<C-x>\<C-k>",
+        \ char2nr("\<C-t>"): "\<C-x>\<C-t>",
+        \ char2nr("\<C-i>"): "\<C-x>\<C-i>",
+        \ char2nr("\<C-]>"): "\<C-x>\<C-]>",
+        \ char2nr("\<C-f>"): "\<C-x>\<C-f>",
+        \ char2nr("\<C-d>"): "\<C-x>\<C-d>",
+        \ char2nr("\<C-v>"): "\<C-x>\<C-v>",
+        \ char2nr("\<C-u>"): "\<C-x>\<C-u>",
+        \ char2nr("\<C-o>"): "\<C-x>\<C-o>",
+        \ char2nr('s'): "\<C-x>s",
+        \ char2nr("\<C-s>"): "\<C-x>s",
+        \}
 let s:hint_i_ctrl_x_msg = join([
-      \ '<C-l>: Whole lines',
-      \ '<C-n>: keywords in the current line',
-      \ "<C-k>: keywords in 'dictionary'",
-      \ "<C-t>: keywords in 'thesaulus",
-      \ '<C-i>: keywords in the current and included files',
-      \ '<C-]>: tags',
-      \ '<C-f>: file names',
-      \ '<C-d>: definitions or macros',
-      \ '<C-v>: Vim command-line',
-      \ "<C-u>: User defined completion ('completefunc')",
-      \ "<C-o>: omni completion('omnifunc')",
-      \ "s: Spelling suggestions ('spell')"
-      \], "\n")
+        \ '<C-l>: Whole lines',
+        \ '<C-n>: keywords in the current line',
+        \ "<C-k>: keywords in 'dictionary'",
+        \ "<C-t>: keywords in 'thesaulus",
+        \ '<C-i>: keywords in the current and included files',
+        \ '<C-]>: tags',
+        \ '<C-f>: file names',
+        \ '<C-d>: definitions or macros',
+        \ '<C-v>: Vim command-line',
+        \ "<C-u>: User defined completion ('completefunc')",
+        \ "<C-o>: omni completion('omnifunc')",
+        \ "s: Spelling suggestions ('spell')"
+        \], "\n")
 function! s:hint_i_ctrl_x() abort
   echo s:hint_i_ctrl_x_msg
   let c = getchar()
