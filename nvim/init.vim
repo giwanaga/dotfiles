@@ -1,3 +1,7 @@
+" enable to include double-byte characters
+set encoding=utf-8
+scriptencoding utf-8
+
 " augroup for plugin
 augroup MyAutoCmd
   autocmd!
@@ -12,7 +16,6 @@ augroup EditVimrc
   autocmd!
   autocmd EditVimrc BufwritePost $MYVIMRC nested source $MYVIMRC
 augroup END
-
 
 " dein.vim {{{
 "  directory configuration
@@ -45,11 +48,13 @@ nnoremap <silent> <Space>ed :<C-u>edit `=g:toml_file`<CR>
 nnoremap <silent> <Space>el :<C-u>edit `=g:toml_lazy`<CR>
 " dein.vim }}}
 
+" vim-autoclose {{{
+let g:AutoCloseExpandSpace = 0
+" vim-autoclose }}}
+
 " FILE
 filetype plugin indent on
-set encoding=utf-8
 set fileencoding=utf-8
-scriptencoding utf-8
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac
 set ambiwidth=double
@@ -324,6 +329,45 @@ if has('syntax')
 endif
 " ShowToge }}}
 
+" ins-completion help {{{
+let s:compl_key_dict = {
+      \ char2nr("\<C-l>"): "\<C-x>\<C-l>",
+      \ char2nr("\<C-n>"): "\<C-x>\<C-n>",
+      \ char2nr("\<C-p>"): "\<C-x>\<C-p>",
+      \ char2nr("\<C-k>"): "\<C-x>\<C-k>",
+      \ char2nr("\<C-t>"): "\<C-x>\<C-t>",
+      \ char2nr("\<C-i>"): "\<C-x>\<C-i>",
+      \ char2nr("\<C-]>"): "\<C-x>\<C-]>",
+      \ char2nr("\<C-f>"): "\<C-x>\<C-f>",
+      \ char2nr("\<C-d>"): "\<C-x>\<C-d>",
+      \ char2nr("\<C-v>"): "\<C-x>\<C-v>",
+      \ char2nr("\<C-u>"): "\<C-x>\<C-u>",
+      \ char2nr("\<C-o>"): "\<C-x>\<C-o>",
+      \ char2nr('s'): "\<C-x>s",
+      \ char2nr("\<C-s>"): "\<C-x>s",
+      \}
+let s:hint_i_ctrl_x_msg = join([
+      \ '<C-l>: Whole lines',
+      \ '<C-n>: keywords in the current line',
+      \ "<C-k>: keywords in 'dictionary'",
+      \ "<C-t>: keywords in 'thesaulus",
+      \ '<C-i>: keywords in the current and included files',
+      \ '<C-]>: tags',
+      \ '<C-f>: file names',
+      \ '<C-d>: definitions or macros',
+      \ '<C-v>: Vim command-line',
+      \ "<C-u>: User defined completion ('completefunc')",
+      \ "<C-o>: omni completion('omnifunc')",
+      \ "s: Spelling suggestions ('spell')"
+      \], "\n")
+function! s:hint_i_ctrl_x() abort
+  echo s:hint_i_ctrl_x_msg
+  let c = getchar()
+  return get(s:compl_key_dict, c, nr2char(c))
+endfunction
+inoremap <expr> <C-x> <SID>hint_i_ctrl_x()
+" ins-completion help }}}
+
 " help
 :set helplang=ja,en
 set keywordprg=:help
@@ -360,5 +404,19 @@ nnoremap <silent> [fugitive]b :<C-u>Gblame<CR>
 nnoremap <silent> [fugitive]l :<C-u>Glog<CR>
 " fugitive }}}
 
+" plugin-dev for ncrement {{{
+" set runtimepath+=~/dev/vimscript/developing/ncrement.vim
+" let g:ncrement_autoupdate = 0
+" let g:ncrement_use_dlist = 1
+let g:ncrement_u_wordlist_1 = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月", ]
+nnoremap <silent><leader>n :<C-u>call ncrement#nextword(v:count1)<CR>
+nnoremap <silent><leader>p :<C-u>call ncrement#prevword(v:count1)<CR>
+nnoremap <silent><leader>wn1 :<C-u>call ncrement#nextwordof(ncrement_u_wordlist_1, v:count1)<CR>
+nnoremap <silent><leader>wp1 :<C-u>call ncrement#prevwordof(ncrement_u_wordlist_1, v:count1)<CR>
+" plugin-dev for ncrement }}}
 " Finally
+
+" beta {{{
+set shortmess+=I
+" beta }}}
 syntax enable
