@@ -102,3 +102,7 @@ repo = 'cespare/vim-toml'
 # MISCELLANOUS
 [[plugins]]
 repo = 'thinca/vim-scouter'
+
+# OWN
+[[plugins]]
+repo = 'giwanaga/ncrement.vim'

@@ -31,7 +31,9 @@ if !isdirectory(s:dein_repo_dir)
   call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
 "  path
-let &runtimepath = s:dein_repo_dir . ',' . &runtimepath
+if match(split(&runtimepath, ''), s:dein_repo_dir) < 0
+  let &runtimepath = s:dein_repo_dir . ',' . &runtimepath
+endif
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#load_toml(g:toml_file, {'lazy': 0})
@@ -46,6 +48,25 @@ endif
 "  edit plugin lists
 nnoremap <silent> <Space>ed :<C-u>edit `=g:toml_file`<CR>
 nnoremap <silent> <Space>el :<C-u>edit `=g:toml_lazy`<CR>
+
+function! s:update_own_dein_repo() abort
+  if !dein#load_state(s:dein_dir)
+    echo "dein is not loaded"
+    return
+  endif
+
+  call dein#begin(s:dein_dir)
+  call dein#load_toml(g:toml_file, {'lazy': 0})
+  call dein#load_toml(g:toml_lazy, {'lazy': 1})
+  call dein#end()
+  call dein#save_state()
+  if dein#check_install()
+    call dein#install()
+  else
+    echo "no update on the plugin lists"
+  endif
+endfunction
+command! UpdateOwnDeinRepo call <SID>update_own_dein_repo()
 " dein.vim }}}
 
 " vim-autoclose {{{
@@ -369,6 +390,15 @@ endfunction
 inoremap <expr> <C-x> <SID>hint_i_ctrl_x()
 " ins-completion help }}}
 
+" own-func beta: echo_to_register {{{
+function! s:echo_to_register(exp)
+  call execute('redir @">')
+  call execute('echo ' . a:_ommand)
+  call execute('redir end')
+endfunction
+command! -nargs=1 EchoToReg call <SID>echo_to_register(<f-args>)
+" own-func beta: echo_to_register }}}
+
 " help
 :set helplang=ja,en
 set keywordprg=:help
@@ -407,6 +437,8 @@ nnoremap <silent> [fugitive]l :<C-u>Glog<CR>
 
 " plugin-dev for ncrement {{{
 " set runtimepath+=~/dev/vimscript/developing/ncrement.vim
+" plugin-dev for ncrement }}}
+" ncrement.vim {{{
 " let g:ncrement_autoupdate = 0
 " let g:ncrement_use_dlist = 1
 let g:ncrement_u_wordlist_1 = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月", ]
@@ -414,10 +446,11 @@ nnoremap <silent><leader>n :<C-u>call ncrement#nextword(v:count1)<CR>
 nnoremap <silent><leader>p :<C-u>call ncrement#prevword(v:count1)<CR>
 nnoremap <silent><leader>wn1 :<C-u>call ncrement#nextwordof(ncrement_u_wordlist_1, v:count1)<CR>
 nnoremap <silent><leader>wp1 :<C-u>call ncrement#prevwordof(ncrement_u_wordlist_1, v:count1)<CR>
-" plugin-dev for ncrement }}}
-" Finally
+" ncrement.vim }}}
 
 " beta {{{
 set shortmess+=I
 " beta }}}
+
+" Finally
 syntax enable
