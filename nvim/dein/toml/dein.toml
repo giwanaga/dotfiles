@@ -25,7 +25,13 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'scrooloose/syntastic'
 
 [[plugins]]
+repo = 'w0rp/ale'
+
+[[plugins]]
 repo = 'thinca/vim-quickrun'
+
+#[[plugins]]
+#repo = 'thinca/vim-painter'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -57,8 +63,11 @@ repo = 'Xuyuanp/nerdtree-git-plugin'
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
+#[[plugins]]
+#repo = 'tpope/vim-surround'
+
 [[plugins]]
-repo = 'tpope/vim-surround'
+repo = 'vim-scripts/vim-sandwich'
 
 [[plugins]]
 repo = 'tpope/vim-repeat'
@@ -83,6 +92,9 @@ repo = 'kannokanno/previm'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'simeji/winresizer'
 
 # COLORSCHEMA
 [[plugins]]

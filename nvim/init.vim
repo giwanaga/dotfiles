@@ -69,6 +69,10 @@ endfunction
 command! UpdateOwnDeinRepo call <SID>update_own_dein_repo()
 " dein.vim }}}
 
+" initial display {{{
+set shortmess+=I
+" initial display }}}
+
 " vim-autoclose {{{
 let g:AutoCloseExpandSpace = 0
 " vim-autoclose }}}
@@ -270,25 +274,37 @@ map {{ <Plug>(edgemotion-k)
 map }} <Plug>(edgemotion-j)
 " edgemotion }}}
 
-" syntastic {{{
-let g:syntastic_enable_signs=1
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_loc_list_height=6
-let g:syntastic_javascript_checkers=['eslint']
-
-let g:syntastic_check_on_open=0  " don't check on open
-let g:syntastic_check_on_save=0  " check on save
-let g:syntastic_check_on_wq=0    " don't check on wq
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_mode_map = {
-        \ 'mode': 'active',
-        \ 'active_filetypes': ['javascript'],
-        \ 'passive_filetypes': [],
-        \ }
+" syntastic => replaced to ale {{{
+" let g:syntastic_enable_signs=1
+" let g:syntastic_always_populate_loc_list=1
+" let g:syntastic_auto_loc_list=1
+" let g:syntastic_loc_list_height=6
+" let g:syntastic_javascript_checkers=['eslint']
+" 
+" let g:syntastic_check_on_open=0  " don't check on open
+" let g:syntastic_check_on_save=0  " check on save
+" let g:syntastic_check_on_wq=0    " don't check on wq
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_mode_map = {
+"         \ 'mode': 'active',
+"         \ 'active_filetypes': ['javascript'],
+"         \ 'passive_filetypes': [],
+"         \ }
 " syntastic }}}
+" ale {{{
+let g:ale_lint_on_text_changed = 0
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
+let g:airline#extensions#ale#open_lnum_symbol = '('
+let g:airline#extensions#ale#close_lnum_symbol = ')'
+let g:ale_echo_msg_format = '[%linter%]%code: %%s'
+highlight link ALEErrorSign Tag
+highlight link ALEWarningSign StorageClass
+nmap <silent> <C-e> <Plug>(ale_previous_wrap)
+nmap <silent> <C-y> <Plug>(ale_next_wrap)
+" ale }}}
 
 " markdown preview {{{
 let g:netrw_nogx=1
@@ -393,11 +409,22 @@ inoremap <expr> <C-x> <SID>hint_i_ctrl_x()
 " own-func beta: echo_to_register {{{
 function! s:echo_to_register(exp)
   call execute('redir @">')
-  call execute('echo ' . a:_ommand)
+  call execute('echo ' . a:exp)
   call execute('redir end')
 endfunction
 command! -nargs=1 EchoToReg call <SID>echo_to_register(<f-args>)
 " own-func beta: echo_to_register }}}
+
+" Prevent accidental death of windows by <C-w>o {{{
+function! s:close_windows() abort
+  if input('Are you sure to close all of the other windows? [y/N]') =~? '^y\%[es]$'
+    execute "normal! \<C-W>o"
+  else
+    echo "\ncancelled."
+  endif
+endfunction
+nnoremap <C-w>o :call <SID>close_windows()<CR>
+" Prevent accidental death of windows by <C-w>o }}}
 
 " help
 :set helplang=ja,en
@@ -435,6 +462,12 @@ nnoremap <silent> [fugitive]b :<C-u>Gblame<CR>
 nnoremap <silent> [fugitive]l :<C-u>Glog<CR>
 " fugitive }}}
 
+" winresizer {{{
+nnoremap <silent> <C-i> :<C-u>WinResizerStartResize<CR>
+let g:winresizer_vert_resize = 1
+let g:winresizer_horiz_resize = 1
+" winresizer }}}
+
 " plugin-dev for ncrement {{{
 " set runtimepath+=~/dev/vimscript/developing/ncrement.vim
 " plugin-dev for ncrement }}}
@@ -449,7 +482,6 @@ nnoremap <silent><leader>wp1 :<C-u>call ncrement#prevwordof(ncrement_u_wordlist_
 " ncrement.vim }}}
 
 " beta {{{
-set shortmess+=I
 " beta }}}
 
 " Finally
