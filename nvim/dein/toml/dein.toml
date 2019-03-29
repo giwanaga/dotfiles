@@ -39,6 +39,9 @@ repo = 'Shougo/vimproc.vim'
 #[[plugins]]
 #repo = 'itchyny/lightline.vim'
 
+[[plugins]]
+repo = 'itchyny/vim-qfedit'
+
 #[[plugins]]
 #repo = 'powerline/powerline'
 
