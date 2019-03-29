@@ -107,8 +107,6 @@ set wildmenu
 set formatoptions+=mM
 set wildmode=list:longest
 set nrformats=hex
-nnoremap + <C-a>
-nnoremap - <C-x>
 
 " DISPLAY
 set number
@@ -475,10 +473,10 @@ let g:winresizer_horiz_resize = 1
 " let g:ncrement_autoupdate = 0
 " let g:ncrement_use_dlist = 1
 let g:ncrement_u_wordlist_1 = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月", ]
-nnoremap <silent><leader>n :<C-u>call ncrement#nextword(v:count1)<CR>
-nnoremap <silent><leader>p :<C-u>call ncrement#prevword(v:count1)<CR>
-nnoremap <silent><leader>wn1 :<C-u>call ncrement#nextwordof(ncrement_u_wordlist_1, v:count1)<CR>
-nnoremap <silent><leader>wp1 :<C-u>call ncrement#prevwordof(ncrement_u_wordlist_1, v:count1)<CR>
+nnoremap <silent>+ :<C-u>call ncrement#nextword(v:count1)<CR>
+nnoremap <silent>- :<C-u>call ncrement#prevword(v:count1)<CR>
+nnoremap <silent><leader>w1+ :<C-u>call ncrement#nextwordof(ncrement_u_wordlist_1, v:count1)<CR>
+nnoremap <silent><leader>w1- :<C-u>call ncrement#prevwordof(ncrement_u_wordlist_1, v:count1)<CR>
 " ncrement.vim }}}
 
 " beta {{{
