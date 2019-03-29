@@ -413,16 +413,19 @@ endfunction
 command! -nargs=1 EchoToReg call <SID>echo_to_register(<f-args>)
 " own-func beta: echo_to_register }}}
 
-" Prevent accidental death of windows by <C-w>o {{{
-function! s:close_windows() abort
-  if input('Are you sure to close all of the other windows? [y/N]') =~? '^y\%[es]$'
-    execute "normal! \<C-W>o"
-  else
-    echo "\ncancelled."
-  endif
+" <C-w>u to undo <C-w>o {{{
+let s:windback_bkp = '~/windback_session.vim'
+function! Windback_only() abort
+  execute 'mks! ' . s:windback_bkp
+  execute "normal! \<C-W>o"
 endfunction
-nnoremap <C-w>o :call <SID>close_windows()<CR>
-" Prevent accidental death of windows by <C-w>o }}}
+function! Windback_undo() abort
+  execute 'source ' . s:windback_bkp
+endfunction
+nnoremap <silent><C-w>o :call Windback_only()<CR>
+nnoremap <silent><C-w><C-o> :call Windback_only()<CR>
+nnoremap <silent><C-w>u :call Windback_undo()<CR>
+" <C-w>u to undo <C-w>o }}}
 
 " help
 :set helplang=ja,en
