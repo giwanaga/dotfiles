@@ -1,3 +1,4 @@
+[[plugins]]
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
@@ -6,11 +7,11 @@ repo = 'Shougo/neomru.vim'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 
-[[plugins]]
-repo = 'Shougo/defx.nvim'
+#[[plugins]]
+#repo = 'Shougo/defx.nvim'
 
-[[plugins]]
-repo = 'Shougo/deoppet.nvim'
+#[[plugins]]
+#repo = 'Shougo/deoppet.nvim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
