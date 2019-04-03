@@ -7,11 +7,11 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-autocmd MyAutoCmd FileType help nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd FileType help nnoremap <buffer>q <C-w>c
 
 " Shortcut for Configuration Files
-nnoremap <silent> <Space>ev :<C-u>edit $MYVIMRC<CR>
-nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC<CR>
+nnoremap <silent><Space>ev :<C-u>edit $MYVIMRC<CR>
+nnoremap <silent><Space>rv :<C-u>source $MYVIMRC<CR>
 augroup EditVimrc
   autocmd!
   autocmd EditVimrc BufwritePost $MYVIMRC nested source $MYVIMRC
@@ -46,8 +46,8 @@ if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
 "  edit plugin lists
-nnoremap <silent> <Space>ed :<C-u>edit `=g:toml_file`<CR>
-nnoremap <silent> <Space>el :<C-u>edit `=g:toml_lazy`<CR>
+nnoremap <silent><Space>ed :<C-u>edit `=g:toml_file`<CR>
+nnoremap <silent><Space>el :<C-u>edit `=g:toml_lazy`<CR>
 
 function! s:update_own_dein_repo() abort
   if !dein#load_state(s:dein_dir)
@@ -160,10 +160,10 @@ nnoremap sn gt
 nnoremap sp gT
 
 " NERDTree {{{
-nnoremap <silent> <C-N> :NERDTreeToggle<CR>
+nnoremap <silent><C-n> :NERDTreeToggle<CR>
 " NERDTree }}}
 " defx.nvim {{{
-nnoremap <silent> <C-P> :Defx -split=vertical -winwidth=50 -direction=topleft<CR>
+nnoremap <silent><C-p> :Defx -split=vertical -winwidth=50 -direction=topleft<CR>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> <CR> defx#do_action('open')
@@ -335,7 +335,9 @@ nnoremap <Leader>q :<C-u>write<CR>:QuickRun -mode n<CR>
 xnoremap <Leader>q :<C-u>write<CR>gv:QuickRun -mode v<CR>
 nnoremap <expr><silent> <C-c> quickrun#is_running ? quickrun#sweep_sessions() : "\<C-c>"
 " quickrun }}}
-
+" vim-splash {{{
+let g:splash#path = empty($HOME) ? expand('~/dotfiles/.vim/docs/forsplash.txt') : $HOME . '/dotfiles/.vim/docs/forsplash.txt'
+" vim-splash }}}
 
 " OWN FUNC
 " Zenkaku Space {{{
@@ -464,7 +466,7 @@ nnoremap <silent> [fugitive]l :<C-u>Glog<CR>
 " fugitive }}}
 
 " winresizer {{{
-nnoremap <silent> <C-i> :<C-u>WinResizerStartResize<CR>
+nnoremap <silent><C-i> :<C-u>WinResizerStartResize<CR>
 let g:winresizer_vert_resize = 1
 let g:winresizer_horiz_resize = 1
 " winresizer }}}
@@ -483,6 +485,15 @@ nnoremap <silent><leader>w1- :<C-u>call ncrement#prevwordof(ncrement_u_wordlist_
 " ncrement.vim }}}
 
 " beta {{{
+let s:unite_source = { 'name': 'lines', }
+function! s:unite_source.gather_candidates(args, context)
+  let lines = getbufline("%",1,'$')
+  let path = expand('#:p')
+  let format = '%' . strlen (len(lines)) . 'd: %s'
+  return map(lines, '{ "word":printf(format, v:key+1, v:val), "source":"lines", "kind":"jump_list", "action__path":path, "action__line":v:key+1, }')
+endfunction
+call unite#define_source(s:unite_source)
+
 " beta }}}
 
 " Finally

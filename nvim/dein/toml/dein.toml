@@ -1,3 +1,4 @@
+[[plugins]]
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
@@ -117,6 +118,9 @@ repo = 'cespare/vim-toml'
 # MISCELLANOUS
 [[plugins]]
 repo = 'thinca/vim-scouter'
+
+[[plugins]]
+repo = 'thinca/vim-splash'
 
 # OWN
 [[plugins]]
