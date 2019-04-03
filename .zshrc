@@ -2,13 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/giwa/.oh-my-zsh
+# export ZSH=/home/giwa/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="eastwood"
+# ZSH_THEME="eastwood"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -95,6 +95,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ez="vim ~/.zshrc"
 alias rz="source ~/.zshrc"
+alias ep="vim $ZDOTDIR/.zpreztorc"
+alias rp="source $ZDOTDIR/.zpreztorc"
 alias ll="ls -l"
 alias la="ls -la"
 
@@ -109,10 +111,6 @@ alias ghc="stack ghc"
 alias ghci="stack ghci"
 autoload -U +X bashcompinit && bashcompinit
 eval "$(stack --bash-completion-script stack)"
-
-##EDIT ZSHRC
-alias ez="vim ~/.zshrc"
-alias rz="source ~/.zshrc"
 
 ##HISTORY MANAGEMENT
 export HISTFILE=${HOME}/.zhistory
@@ -138,7 +136,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
-
 
 
 #UNZIP for CP932
