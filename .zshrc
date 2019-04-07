@@ -69,6 +69,7 @@ alias ep="vim $ZDOTDIR/.zpreztorc"
 alias rp="source $ZDOTDIR/.zpreztorc"
 alias ll="ls -l"
 alias la="ls -la"
+alias vh="vim -c ':h | only'"
 
 
 #OWN SETTINGS
@@ -77,10 +78,10 @@ autoload -U +X compinit && compinit
 export TERM='xterm-256color'
 
 ##HASKELL STACK COMPLETION
-alias ghc="stack ghc"
-alias ghci="stack ghci"
-autoload -U +X bashcompinit && bashcompinit
-eval "$(stack --bash-completion-script stack)"
+# alias ghc="stack ghc"
+# alias ghci="stack ghci"
+# autoload -U +X bashcompinit && bashcompinit
+# eval "$(stack --bash-completion-script stack)"
 
 ##HISTORY MANAGEMENT
 export HISTFILE=${HOME}/.zhistory
