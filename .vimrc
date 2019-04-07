@@ -436,6 +436,10 @@ nnoremap <silent><C-w>u :call Windback_undo()<CR>
 " <C-w>u to undo <C-w>o }}}
 
 " beta {{{
+let s:vimarp_dev = $HOME . '/dev/vimscript/vimarp'
+if match(split(&runtimepath, ''), s:vimarp_dev) < 0
+  let &runtimepath = s:vimarp_dev . ',' . &runtimepath
+endif
 " beta }}}
 
 syntax enable
