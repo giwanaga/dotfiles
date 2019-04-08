@@ -69,20 +69,29 @@ alias ep="vim $ZDOTDIR/.zpreztorc"
 alias rp="source $ZDOTDIR/.zpreztorc"
 alias ll="ls -l"
 alias la="ls -la"
+alias python="python3"
 
 
-#OWN SETTINGS
-##GENERAL
+# OWN SETTINGS
+## GENERAL
 autoload -U +X compinit && compinit
 export TERM='xterm-256color'
 
-##HASKELL STACK COMPLETION
+## ZSH COMPLETION
+if [ -e /usr/local/share/zsh-completions ]; then
+  fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+autoload -Uz compinit && compinit -u
+setopt auto_list
+zstyle ':completion:*default' menu select=1
+
+## HASKELL STACK COMPLETION
 alias ghc="stack ghc"
 alias ghci="stack ghci"
 autoload -U +X bashcompinit && bashcompinit
 eval "$(stack --bash-completion-script stack)"
 
-##HISTORY MANAGEMENT
+## HISTORY MANAGEMENT
 export HISTFILE=${HOME}/.zhistory
 export HISTSIZE=1000
 export SAVEHIST=100000
@@ -96,18 +105,18 @@ setopt hist_save_no_dups
 setopt hist_no_store
 setopt hist_expand
 setopt inc_append_history
-##HISTORY KEYBIND
+## HISTORY KEYBIND
 bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-incremental-search-forward
 
 
-#SETTING XDG BASE DIRECTORY
+# SETTING XDG BASE DIRECTORY
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 
-#UNZIP for CP932
+# UNZIP for CP932
 setopt complete_aliases
 alias unzipw="unzip -Ocp932"

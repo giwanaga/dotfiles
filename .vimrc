@@ -150,6 +150,7 @@ nnoremap k gk
 nnoremap ZQ <Nop>
 nnoremap Y y$
 inoremap <silent>jj <ESC>
+nnoremap <silent>Q gq
 imap <Nul> <Nop>
 let g:mapleader = ',' 
 
@@ -411,6 +412,13 @@ function! s:hint_i_ctrl_x() abort
 endfunction
 inoremap <expr> <C-x> <SID>hint_i_ctrl_x()
 " ins-completion help }}}
+
+" add/remove blank lines {{{
+nnoremap <leader>al :<C-u>%s/$/\r/g<CR>
+vnoremap <leader>al :s/$/\r/g<CR>
+" nnoremap <leader>dl :<C-u>%s/^$\n//g<CR>
+vnoremap <leader>dl :s/^$\n//g<CR>
+" add/remove blank lines }}}
 
 " own-func beta: echo_to_register {{{
 function! s:echo_to_register(exp)
