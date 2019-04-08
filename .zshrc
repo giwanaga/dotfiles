@@ -70,6 +70,7 @@ alias rp="source $ZDOTDIR/.zpreztorc"
 alias ll="ls -l"
 alias la="ls -la"
 alias python="python3"
+alias vh="vim -c ':h | only'"
 
 
 # OWN SETTINGS
@@ -85,11 +86,11 @@ autoload -Uz compinit && compinit -u
 setopt auto_list
 zstyle ':completion:*default' menu select=1
 
-## HASKELL STACK COMPLETION
-alias ghc="stack ghc"
-alias ghci="stack ghci"
-autoload -U +X bashcompinit && bashcompinit
-eval "$(stack --bash-completion-script stack)"
+##HASKELL STACK COMPLETION
+# alias ghc="stack ghc"
+# alias ghci="stack ghci"
+# autoload -U +X bashcompinit && bashcompinit
+# eval "$(stack --bash-completion-script stack)"
 
 ## HISTORY MANAGEMENT
 export HISTFILE=${HOME}/.zhistory
