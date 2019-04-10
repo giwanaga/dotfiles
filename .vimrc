@@ -161,6 +161,24 @@ nnoremap st :<C-u>tabnew<CR>
 nnoremap sn gt
 nnoremap sp gT
 
+" ctags {{{
+set tags=.tags;$HOME
+" <CAUTION> REQUIRES universal-ctags.
+augroup ctags
+  autocmd!
+  autocmd BufWritePost * s:run_universal_ctags
+augroup END
+function! s:run_universal_ctags() abort
+  let l:tags_name = '.tags'
+  let l:tags_path = findfile(l:tags_name, '.;')
+  if l:tags_path ==# ''
+    return
+  endif
+  let l:tags_dirpath = fnamemodify(l:tags_path, ':p:h')
+  execute 'silent !cd' l:tags_dirpath '&& ctags -R -f ' l:tags_name '2> /dev/null &'
+endfunction
+" ctags }}}
+
 " NERDTree {{{
 nnoremap <C-n> :NERDTreeToggle<CR>
 " NERDTree }}}
@@ -419,6 +437,12 @@ vnoremap <leader>al :s/$/\r/g<CR>
 " nnoremap <leader>dl :<C-u>%s/^$\n//g<CR>
 vnoremap <leader>dl :s/^$\n//g<CR>
 " add/remove blank lines }}}
+
+" expand date {{{
+inoremap <expr> ,df strftime('%Y-%m-%d %H:%M')
+inoremap <expr> ,dd strftime('%Y-%m-%d')
+inoremap <expr> ,dt strftime('%H:%M')
+" expand date }}}
 
 " own-func beta: echo_to_register {{{
 function! s:echo_to_register(exp)
