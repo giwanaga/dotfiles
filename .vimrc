@@ -151,6 +151,7 @@ nnoremap ZQ <Nop>
 nnoremap Y y$
 inoremap <silent>jj <ESC>
 nnoremap <silent>Q gq
+nnoremap <silent><leader>d :normal! ggVG_x<CR>
 imap <Nul> <Nop>
 let g:mapleader = ',' 
 
