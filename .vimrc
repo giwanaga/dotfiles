@@ -166,7 +166,7 @@ set tags=.tags;$HOME
 " <CAUTION> REQUIRES universal-ctags.
 augroup ctags
   autocmd!
-  autocmd BufWritePost * s:run_universal_ctags
+  autocmd BufWritePost s:run_universal_ctags
 augroup END
 function! s:run_universal_ctags() abort
   let l:tags_name = '.tags'
