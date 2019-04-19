@@ -2,6 +2,9 @@
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
+repo = 'Shougo/unite-outline'
+
+[[plugins]]
 repo = 'Shougo/neomru.vim'
 
 [[plugins]]
@@ -66,6 +69,9 @@ repo = 'Xuyuanp/nerdtree-git-plugin'
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'vim-jp/vital.vim'
 
 #[[plugins]]
 #repo = 'tpope/vim-surround'
