@@ -121,7 +121,3 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 # UNZIP for CP932
 setopt complete_aliases
 alias unzipw="unzip -Ocp932"
-
-# Prezto
-# source $ZDOTDIR/.zpreztorc
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
