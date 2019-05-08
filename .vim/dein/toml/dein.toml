@@ -32,6 +32,9 @@ repo = 'scrooloose/syntastic'
 repo = 'w0rp/ale'
 
 [[plugins]]
+repo = 'mattn/emmet-vim'
+
+[[plugins]]
 repo = 'thinca/vim-quickrun'
 
 #[[plugins]]

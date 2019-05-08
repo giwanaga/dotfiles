@@ -278,8 +278,8 @@ let g:airline#extensions#ale#close_lnum_symbol = ')'
 let g:ale_echo_msg_format = '[%linter%]%code: %%s'
 highlight link ALEErrorSign Tag
 highlight link ALEWarningSign StorageClass
-nmap <silent> <C-e> <Plug>(ale_previous_wrap)
-nmap <silent> <C-y> <Plug>(ale_next_wrap)
+" nmap <silent> <C-e> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-y> <Plug>(ale_next_wrap)
 " ale }}}
 
 " markdown preview {{{
@@ -361,6 +361,10 @@ nnoremap <silent>- :<C-u>call ncrement#prevword(v:count1)<CR>
 nnoremap <silent><leader>w1+ :<C-u>call ncrement#nextwordof(ncrement_u_wordlist_1, v:count1)<CR>
 nnoremap <silent><leader>w1- :<C-u>call ncrement#prevwordof(ncrement_u_wordlist_1, v:count1)<CR>
 " ncrement.vim }}}
+
+" emmet {{{
+let g:user_emmet_leader_key = '<C-y>'
+" emmet }}}
 
 
 " Own Func

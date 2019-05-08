@@ -3,9 +3,6 @@ repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
 
 [[plugins]]
-repo = 'mattn/emmet-vim'
-
-[[plugins]]
 repo = 'Shougo/neoyank.vim'
 on_if = 1
 on_event = 'TextYankPost'
