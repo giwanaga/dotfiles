@@ -80,6 +80,23 @@ let g:AutoCloseExpandSpace = 0
 
 " tagbar {{{
 noremap <F8> :TagbarToggle<CR>
+"  tagbar markdown configuration
+"    ~/.ctags (or similar configurations) required
+"    ```
+"    --langdef=markdown
+"    --langmap=markdown:.markdown,.mkd,.md
+"    --regex-markdown=/^#[ \t]+(.*)/\. \1/h,heading1/
+"    --regex-markdown=/^##[ \t]+(.*)/\.\. \1/h,heading2/
+"    --regex-markdown=/^###[ \t]+(.*)/\.\.\. \1/h,heading3/
+"    --regex-markdown=/^####[ \t]+(.*)/\.\.\.\. \1/h,heading4/
+"    --regex-markdown=/^#####[ \t]+(.*)/\.\.\.\.\. \1/h,heading5/
+"    --regex-markdown=/^######[ \t]+(.*)/\.\.\.\.\.\. \1/h,heading6/
+"    ```
+let g:tagbar_type_markdown = {
+  \ 'ctagstype' : 'markdown',
+  \ 'kinds' : [ 'h:Headline' ],
+  \ 'sort' : 0,
+  \ }
 " tagbar }}}
 
 " FILE
