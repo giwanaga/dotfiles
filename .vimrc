@@ -78,6 +78,10 @@ set shortmess+=I
 let g:AutoCloseExpandSpace = 0
 " vim-autoclose }}}
 
+" tagbar {{{
+noremap <F8> :TagbarToggle<CR>
+" tagbar }}}
+
 " FILE
 filetype plugin indent on
 set fileencoding=utf-8
