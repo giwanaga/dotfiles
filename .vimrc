@@ -160,10 +160,10 @@ set hidden
 
 
 " CTRL-jhkl to scroll by a step
-noremap <C-J> <C-E>
-noremap <C-K> <C-Y>
-noremap <C-H> zh
-noremap <C-L> zl
+nnoremap <C-J> <C-E>
+nnoremap <C-K> <C-Y>
+nnoremap <C-H> zh
+nnoremap <C-L> zl
 " Move
 nnoremap j gj
 nnoremap k gk
@@ -313,6 +313,12 @@ augroup END
 cnoreabbr pv PrevimOpen
 " markdown preview }}}
 
+" vim-markdown {{{
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_new_list_item_indent = 0
+nmap <Leader>t :TableFormat<CR>
+" vim-markdown }}}
+
 " quickrun {{{
 if has('unix')
   let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
@@ -377,6 +383,7 @@ let g:winresizer_horiz_resize = 1
 " let g:ncrement_autoupdate = 0
 " let g:ncrement_use_dlist = 1
 let g:ncrement_u_wordlist_1 = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月", ]
+let g:ncrement_u_wordlist_2 = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
 nnoremap <silent>+ :<C-u>call ncrement#nextword(v:count1)<CR>
 nnoremap <silent>- :<C-u>call ncrement#prevword(v:count1)<CR>
 nnoremap <silent><leader>w1+ :<C-u>call ncrement#nextwordof(ncrement_u_wordlist_1, v:count1)<CR>
@@ -499,5 +506,7 @@ if match(split(&runtimepath, ''), s:vimarp_dev) < 0
   let &runtimepath = s:vimarp_dev . ',' . &runtimepath
 endif
 " beta }}}
+
+color badwolf
 
 syntax enable

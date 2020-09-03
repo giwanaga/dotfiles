@@ -110,6 +110,9 @@ repo = 'tyru/open-browser.vim'
 repo = 'simeji/winresizer'
 
 [[plugins]]
+repo = 'godlygeek/tabular'
+
+[[plugins]]
 repo = 'majutsushi/tagbar'
 
 # COLORSCHEMA
@@ -126,6 +129,9 @@ repo = 'crusoexia/vim-monokai'
 # SYNTAX
 [[plugins]]
 repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
 
 # MISCELLANOUS
 [[plugins]]

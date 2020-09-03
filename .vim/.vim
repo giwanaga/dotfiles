@@ -1,1 +1,1 @@
-/home/giwa/dotfiles/.vim
+/home/giwac/dotfiles/.vim

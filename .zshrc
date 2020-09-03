@@ -75,6 +75,7 @@ alias vh="vim -c ':h | only'"
 
 # OWN SETTINGS
 ## GENERAL
+autoload -Uz colors colors
 autoload -U +X compinit && compinit
 export TERM='xterm-256color'
 
@@ -85,6 +86,17 @@ fi
 autoload -Uz compinit && compinit -u
 setopt auto_list
 zstyle ':completion:*default' menu select=1
+
+## ZSH PROMPT
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+#RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 ##HASKELL STACK COMPLETION
 # alias ghc="stack ghc"
