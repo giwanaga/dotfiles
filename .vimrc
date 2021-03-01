@@ -507,6 +507,5 @@ if match(split(&runtimepath, ''), s:vimarp_dev) < 0
 endif
 " beta }}}
 
-color badwolf
-
 syntax enable
+color badwolf
