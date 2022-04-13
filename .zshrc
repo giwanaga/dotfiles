@@ -65,8 +65,6 @@ plugins=(
 
 alias ez="vim ~/.zshrc"
 alias rz="source ~/.zshrc"
-alias ep="vim $ZDOTDIR/.zpreztorc"
-alias rp="source $ZDOTDIR/.zpreztorc"
 alias ll="ls -l"
 alias la="ls -la"
 alias python="python3"
@@ -80,12 +78,12 @@ autoload -U +X compinit && compinit
 export TERM='xterm-256color'
 
 ## ZSH COMPLETION
-if [ -e /usr/local/share/zsh-completions ]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
-fi
+# if [ -e /usr/local/share/zsh-completions ]; then
+#   fpath=(/usr/local/share/zsh-completions $fpath)
+# fi
 autoload -Uz compinit && compinit -u
 setopt auto_list
-zstyle ':completion:*default' menu select=1
+# zstyle ':completion:*default' menu select=1
 
 ## ZSH PROMPT
 autoload -Uz vcs_info
@@ -134,3 +132,6 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 # UNZIP for CP932
 setopt complete_aliases
 alias unzipw="unzip -Ocp932"
+
+eval $(dircolors -b ~/.dircolors)
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
