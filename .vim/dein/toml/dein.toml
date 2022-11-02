@@ -32,6 +32,9 @@ repo = 'scrooloose/syntastic'
 repo = 'w0rp/ale'
 
 [[plugins]]
+repo = 'mattn/emmet-vim'
+
+[[plugins]]
 repo = 'thinca/vim-quickrun'
 
 #[[plugins]]
@@ -106,6 +109,12 @@ repo = 'tyru/open-browser.vim'
 [[plugins]]
 repo = 'simeji/winresizer'
 
+[[plugins]]
+repo = 'godlygeek/tabular'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+
 # COLORSCHEMA
 [[plugins]]
 repo = 'sjl/badwolf'
@@ -120,6 +129,9 @@ repo = 'crusoexia/vim-monokai'
 # SYNTAX
 [[plugins]]
 repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
 
 # MISCELLANOUS
 [[plugins]]

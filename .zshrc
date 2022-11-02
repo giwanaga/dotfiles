@@ -65,8 +65,6 @@ plugins=(
 
 alias ez="vim ~/.zshrc"
 alias rz="source ~/.zshrc"
-alias ep="vim $ZDOTDIR/.zpreztorc"
-alias rp="source $ZDOTDIR/.zpreztorc"
 alias ll="ls -l"
 alias la="ls -la"
 alias python="python3"
@@ -75,20 +73,33 @@ alias vh="vim -c ':h | only'"
 
 # OWN SETTINGS
 ## GENERAL
+autoload -Uz colors colors
 autoload -U +X compinit && compinit
 export TERM='xterm-256color'
 
 ## ZSH COMPLETION
-if [ -e /usr/local/share/zsh-completions ]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
-fi
+# if [ -e /usr/local/share/zsh-completions ]; then
+#   fpath=(/usr/local/share/zsh-completions $fpath)
+# fi
 autoload -Uz compinit && compinit -u
 setopt auto_list
-zstyle ':completion:*default' menu select=1
+# zstyle ':completion:*default' menu select=1
+
+## ZSH PROMPT
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+PROMPT='%F{green}%~%f %# '
+RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 ##HASKELL STACK COMPLETION
-# alias ghc="stack ghc"
-# alias ghci="stack ghci"
+alias ghc="stack ghc"
+alias ghci="stack ghci"
 # autoload -U +X bashcompinit && bashcompinit
 # eval "$(stack --bash-completion-script stack)"
 
@@ -121,3 +132,6 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 # UNZIP for CP932
 setopt complete_aliases
 alias unzipw="unzip -Ocp932"
+
+eval $(dircolors -b ~/.dircolors)
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}

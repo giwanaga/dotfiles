@@ -78,6 +78,27 @@ set shortmess+=I
 let g:AutoCloseExpandSpace = 0
 " vim-autoclose }}}
 
+" tagbar {{{
+noremap <F8> :TagbarToggle<CR>
+"  tagbar markdown configuration
+"    ~/.ctags (or similar configurations) required
+"    ```
+"    --langdef=markdown
+"    --langmap=markdown:.markdown,.mkd,.md
+"    --regex-markdown=/^#[ \t]+(.*)/\. \1/h,heading1/
+"    --regex-markdown=/^##[ \t]+(.*)/\.\. \1/h,heading2/
+"    --regex-markdown=/^###[ \t]+(.*)/\.\.\. \1/h,heading3/
+"    --regex-markdown=/^####[ \t]+(.*)/\.\.\.\. \1/h,heading4/
+"    --regex-markdown=/^#####[ \t]+(.*)/\.\.\.\.\. \1/h,heading5/
+"    --regex-markdown=/^######[ \t]+(.*)/\.\.\.\.\.\. \1/h,heading6/
+"    ```
+let g:tagbar_type_markdown = {
+  \ 'ctagstype' : 'markdown',
+  \ 'kinds' : [ 'h:Headline' ],
+  \ 'sort' : 0,
+  \ }
+" tagbar }}}
+
 " FILE
 filetype plugin indent on
 set fileencoding=utf-8
@@ -147,10 +168,10 @@ set hidden
 
 
 " CTRL-jhkl to scroll by a step
-noremap <C-J> <C-E>
-noremap <C-K> <C-Y>
-noremap <C-H> zh
-noremap <C-L> zl
+nnoremap <C-J> <C-E>
+nnoremap <C-K> <C-Y>
+nnoremap <C-H> zh
+nnoremap <C-L> zl
 " Move
 nnoremap j gj
 nnoremap k gk
@@ -286,8 +307,8 @@ let g:airline#extensions#ale#close_lnum_symbol = ')'
 let g:ale_echo_msg_format = '[%linter%]%code: %%s'
 highlight link ALEErrorSign Tag
 highlight link ALEWarningSign StorageClass
-nmap <silent> <C-e> <Plug>(ale_previous_wrap)
-nmap <silent> <C-y> <Plug>(ale_next_wrap)
+" nmap <silent> <C-e> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-y> <Plug>(ale_next_wrap)
 " ale }}}
 
 " markdown preview {{{
@@ -299,6 +320,12 @@ augroup PrevimSettings
 augroup END
 cnoreabbr pv PrevimOpen
 " markdown preview }}}
+
+" vim-markdown {{{
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_new_list_item_indent = 0
+nmap <Leader>t :TableFormat<CR>
+" vim-markdown }}}
 
 " quickrun {{{
 if has('unix')
@@ -364,11 +391,16 @@ let g:winresizer_horiz_resize = 1
 " let g:ncrement_autoupdate = 0
 " let g:ncrement_use_dlist = 1
 let g:ncrement_u_wordlist_1 = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月", ]
+let g:ncrement_u_wordlist_2 = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
 nnoremap <silent>+ :<C-u>call ncrement#nextword(v:count1)<CR>
 nnoremap <silent>- :<C-u>call ncrement#prevword(v:count1)<CR>
 nnoremap <silent><leader>w1+ :<C-u>call ncrement#nextwordof(ncrement_u_wordlist_1, v:count1)<CR>
 nnoremap <silent><leader>w1- :<C-u>call ncrement#prevwordof(ncrement_u_wordlist_1, v:count1)<CR>
 " ncrement.vim }}}
+
+" emmet {{{
+let g:user_emmet_leader_key = '<C-y>'
+" emmet }}}
 
 
 " Own Func
@@ -484,3 +516,4 @@ endif
 " beta }}}
 
 syntax enable
+color badwolf
