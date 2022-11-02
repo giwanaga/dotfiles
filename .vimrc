@@ -89,7 +89,15 @@ augroup FileTypeIndent
   autocmd FileType java        setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType python      setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType javascript  setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType php         setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
+
+" for php
+autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
+highlight Pmenu ctermbg=4
+highlight PmenuSel ctermbg=1
+highlight PMenuSbar ctermbg=4
+
 
 " SEARCH
 set ignorecase
